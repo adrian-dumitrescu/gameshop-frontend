@@ -1,13 +1,43 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="sr is-desktop">
+
 <head>
-  <meta charset="utf-8">
-  <title>Gameshopapp</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <title>Gameshopapp</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Swiper -->
+    <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css?v=6.8.2">
+
+    <!-- Fancybox -->
+    <script src="jquery.fancybox-plus.js"></script>
+    <script src="angular-fancybox-plus.js"></script>
+
+    <!-- Angular Revolution Slider -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="js/angular-revolution.min.js"></script>
+    <script>
+        var myApp = angular.module('myApp', ['rev.slider']);
+        // For Component users, it should look like this:
+        // var myApp = angular.module('myApp', [require('angular-revolution')]);
+    </script>
+
+    <script src="https://kit.fontawesome.com/b8f41db0b9.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="https://html.nkdev.info/monsterplay/assets/images/favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- EXTRA -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MonsterPlay | Page Not Found</title>
+    <meta name="description" content="MonsterPlay - Superpower for Gaming Websites">
+    <meta name="keywords" content="gaming, game, esports, community, template, html, bootstrap, webpack">
+    <meta name="author" content="nK">
+    <!-- START: Styles -->
+
 </head>
-<body>
-  <app-root></app-root>
+
+<body style="height: 100%;">
+    <app-root></app-root>
 </body>
+
 </html>
