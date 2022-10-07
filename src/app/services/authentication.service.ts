@@ -17,10 +17,13 @@ export class AuthenticationService {
   public apiServerURL = environment.apiBaseUrl;
   private jwtHelper = new JwtHelperService();
   private token!: string | null;
+  private guestUser!: User;
   private loggedInUsername!: string | null;
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.addGuestToLocalCache(this.guestUser);
+   }
 
   getIsAuthenticated(): Observable<boolean> {
     return this.isAuthenticated$.asObservable();
@@ -101,6 +104,16 @@ export class AuthenticationService {
     //return this.token != null ? this.token : '';
     return this.token || '';
   }
+
+  public addGuestToLocalCache(user: User): void {
+    localStorage.setItem('guest', JSON.stringify(user));
+  }
+
+  public getGuestFromLocalCache(): User {
+    // if Guest is not null, return user, else return empty json
+    return JSON.parse(localStorage.getItem('guest') || '{}');
+  }
+
 
   public addUserToLocalCache(user: User): void {
     localStorage.setItem('user', JSON.stringify(user));

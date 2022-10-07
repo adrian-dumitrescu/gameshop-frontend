@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { NotificationType } from 'src/app/enum/notification-type';
+import { Role } from 'src/app/enum/role';
 import { User } from 'src/app/model/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -22,6 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated!:boolean;
   openSearchBar: boolean = false;
   public headerSignInForm!: FormGroup;
+  userRole!: string;
 
   constructor(private userService: UserService,
     private formBuilder: FormBuilder,
@@ -38,6 +40,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (this.authService.isUserLoggedIn()) {
       this.user = this.authService.getUserFromLocalCache();
+      this.roleToString();
     }
     //alert(this.userIsAuthenticated);
     this.subscription = this.authService.getIsAuthenticated().subscribe((isAuthenticated: boolean) => {
@@ -56,24 +59,26 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  // ngOnInit(): void {
-  //   if (this.authService.isUserLoggedIn()) {
-  //     this.user = this.authService.getUserFromLocalCache();
-  //   }
-  //   this.subscription = this.authService.getIsAuthenticated().subscribe((isAuthenticated: boolean) => {
-  //     if (isAuthenticated){
-  //       this.userIsAuthenticated = isAuthenticated;     
-  //       this.user = this.authService.getUserFromLocalCache();
-  //     }else{
-  //       this.userIsAuthenticated = isAuthenticated;
-  //     }
-  //   });
-  //   // this.headerSignInForm = this.formBuilder.group({
-  //   //   email: ['', Validators.required],
-  //   //   password: ['', Validators.required]
-  //   // })
+  private roleToString(): string{
+    if(this.isAdmin){
+      return this.userRole = "Admin";
+    } 
+    else{
+      return this.userRole = "User";
+    }
+  }
 
-  // }
+  private getUserRole(): string {
+    return this.authService.getUserFromLocalCache().roles[0].role;
+  }
+
+  public get isAdmin(): boolean {
+    return this.getUserRole() === Role.ADMIN || this.getUserRole() === Role.SUPER_ADMIN;
+  }
+
+  public get isUser(): boolean {
+    return this.getUserRole() === Role.ADMIN || this.getUserRole() === Role.SUPER_ADMIN;
+  }
 
 
   public logOut(): void {

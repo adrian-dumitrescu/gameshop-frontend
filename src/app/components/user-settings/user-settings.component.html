@@ -1,0 +1,201 @@
+<app-user></app-user>
+<!-- TABS -->
+<div class="container" data-sr="" data-sr-duration="1000" data-sr-distance="20"
+    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+    <ul class="mpl-user-navigation mpl-carousel" data-gap="0" data-slides="auto">
+        <div
+            class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
+            <div class="swiper-wrapper" id="swiper-wrapper-6b310a6364dd3e127" aria-live="polite">
+                <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 6">
+                    <li>
+                        <a routerLink="/profile"> Profile </a>
+                    </li>
+                </div>
+                <div class="swiper-slide" role="group" aria-label="4 / 6">
+                    <li class="active">
+                        <a routerLink="/settings"> Settings </a>
+                    </li>
+                </div>
+                <div class="swiper-slide" role="group" aria-label="5 / 6">
+                    <li>
+                        <a routerLink="/Inventory"> Inventory </a>
+                    </li>
+                </div>
+                <!-- <div class="swiper-slide" role="group" aria-label="3 / 6">
+                    <li>
+                        <a href="user-messages.html"> Messages<span class="badge badge-brand">8</span>
+                        </a>
+                    </li>
+                </div> -->
+            </div><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
+    </ul>
+</div>
+<!-- CONTENT -->
+<div class="mpl-box-md">
+    <div class="container">
+        <div class="row hgap-lg vgap-lg">
+            <div class="col-lg mpl-content">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="nav-item"><a href="#general" class="nav-link active"
+                            aria-controls="general" role="tab" data-bs-toggle="tab" aria-selected="true">General</a>
+                    </li>
+                    <li role="presentation" class="nav-item"><a href="#notifications" class="nav-link"
+                            aria-controls="notifications" role="tab" data-bs-toggle="tab"
+                            aria-selected="false">Notifications</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active show" id="general">
+                        <form action="#" data-sr="user-setting" data-sr-duration="1000" data-sr-distance="20">
+                            <div class="mpl-snippet-fill" data-sr-item="user-setting"
+                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                <h2>Change Password</h2>
+                                <div class="row hgap-sm vgap-sm">
+                                    <div class="col-12 col-sm-6">
+                                        <label for="setting_password">Current Password:</label><input
+                                            class="form-control" type="password" id="setting_password"
+                                            name="setting_password" placeholder="Current Password"><span
+                                            class="form-control-bg"></span>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <label for="setting_new_password">New Password:</label><input
+                                            class="form-control" type="password" id="setting_new_password"
+                                            name="setting_new_password" placeholder="New Password"><span
+                                            class="form-control-bg"></span>
+                                    </div>
+                                </div>
+                                <button class="mpl-link mt-30">Change Password</button>
+                            </div>
+                            <div class="mpl-snippet-fill" data-sr-item="user-setting"
+                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                <h2>Email</h2>
+                                <div class="row hgap-sm vgap-sm">
+                                    <div class="col-12 col-sm-6">
+                                        <label for="setting_email">Current Email:</label><input class="form-control"
+                                            type="email" id="setting_email" name="setting_email" value="{{user.email}}"
+                                            disabled=""><span class="form-control-bg"></span>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <label for="setting_new_email">New Email:</label><input class="form-control"
+                                            type="email" id="setting_new_email" name="setting_new_email"
+                                            placeholder="New Email"><span class="form-control-bg"></span>
+                                    </div>
+                                </div>
+                                <button class="mpl-link mt-30">Change Email</button>
+                            </div>
+                            <div class="mpl-snippet-fill" data-sr-item="user-setting"
+                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                <h2>Phone Number</h2>
+                                <div class="row hgap-sm vgap-sm">
+                                    <div class="col-12 col-sm-6">
+                                        <label for="setting_phone">Current Phone:</label><input class="form-control"
+                                            type="text" id="setting_phone" name="setting_phone" value="+1 *** ** ** 11"
+                                            disabled=""><span class="form-control-bg"></span>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <label for="setting_new_phone">New Phone:</label><input class="form-control"
+                                            type="text" id="setting_new_phone" name="setting_new_phone"
+                                            placeholder="New Phone"><span class="form-control-bg"></span>
+                                    </div>
+                                </div>
+                                <button class="mpl-link mt-30">Change Phone</button>
+                            </div>
+                            <div class="mpl-snippet-fill" data-sr-item="user-setting" data-sr-id="9"
+                                style="visibility: visible; opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 20, 0, 1);">
+                                <h2>Language</h2>
+                                <select class="form-control custom-select" id="setting_language"
+                                    name="setting_language">
+                                    <option>Azərbaycan dili</option>
+                                    <option>Bahasa Indonesia</option>
+                                    <option>Bosanski</option>
+                                    <option>Dansk</option>
+                                    <option>Deutsch</option>
+                                    <option>Eesti</option>
+                                    <option selected="">English</option>
+                                    <option>Español</option>
+                                    <option>Esperanto</option>
+                                    <option>Français</option>
+                                    <option>Hrvatski</option>
+                                    <option>Italiano</option>
+                                    <option>Kiswahili</option>
+                                    <option>Latviešu</option>
+                                    <option>Lietuvių</option>
+                                    <option>Magyar</option>
+                                    <option>Moldovenească</option>
+                                    <option>Nederlands</option>
+                                    <option>Norsk</option>
+                                    <option>O‘zbek</option>
+                                    <option>Polski</option>
+                                    <option>Português</option>
+                                    <option>Română</option>
+                                    <option>Shqip</option>
+                                    <option>Slovenščina</option>
+                                    <option>Suomi</option>
+                                    <option>Svenska</option>
+                                    <option>Tagalog</option>
+                                </select><span class="form-control-bg"></span>
+                                <button class="mpl-link mt-30">Save Regional Settings</button>
+                            </div>
+                            <div class="mpl-snippet-fill" data-sr-item="user-setting" data-sr-id="10"
+                                style="visibility: visible; opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 20, 0, 1);">
+                                <h2>Appearance</h2>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="setting_font"
+                                        name="setting_font"><label class="form-check-label" for="setting_font">Use Large
+                                        Fonts</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="notifications">
+                        <form action="#">
+                            <div class="mpl-snippet-fill">
+                                <h2>Notifications</h2>
+                                <div class="row vgap-sm">
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="notification_update"
+                                                name="notification_update" checked=""><label class="form-check-label"
+                                                for="notification_update">Update notifications</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="notification_news"
+                                                name="notification_news" checked=""><label class="form-check-label"
+                                                for="notification_news">News notifications</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="notification_off"
+                                                name="notification_off"><label class="form-check-label"
+                                                for="notification_off">Turn off all notifications.</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto-lg mpl-sidebar" data-sr="widget" data-sr-duration="1200" data-sr-distance="20">
+                <div class="mpl-widget mpl-widget-about">
+                    <h4 class="mpl-widget-title">About</h4>
+                    <div data-sr-item="widget"
+                        style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        <p>Ecce dabo Pinkman Isai OK? Sicut locutus est tibi, et datus est, et hic sine Semper consequat
+                            volumus ... et ille in urbe ista licet? Et infernus, ubi tu non Virginiae ornare vel ipsum.
+                            Ut enim Albuquerque et ille eum iure hic, et ego ducam te ad iustitiam.</p>
+                    </div>
+                </div>
+                <!-- <div class="mpl-widget mpl-widget-location">
+                    <h4 class="mpl-widget-title" data-sr-item="widget" style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">Location</h4>
+                    <div class="mpl-widget-map" data-sr-item="widget" style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423284.59051352815!2d-118.41173249999999!3d34.0204989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2z0JvQvtGBLdCQ0L3QtNC20LXQu9C10YEsINCa0LDQu9C40YTQvtGA0L3QuNGPLCDQodCo0JA!5e0!3m2!1sru!2sru!4v1430158354122"></iframe>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>

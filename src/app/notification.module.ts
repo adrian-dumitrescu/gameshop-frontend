@@ -5,7 +5,7 @@ const customNotifierOptions: NotifierOptions = {
     position: {
           horizontal: {
               position: 'left',
-              distance: 150
+              distance: 10
           },
           vertical: {
               position: 'top',

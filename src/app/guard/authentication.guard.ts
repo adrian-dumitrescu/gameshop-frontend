@@ -18,7 +18,9 @@ export class AuthenticationGuard implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean{
     return this.isUserLoggedIn();
   }
+  
 
+  // Checks if the one who is accessing the request (for example //get all) is logged in. 
   // The guard is checking if a particular user Can Activate a certain route
   // If it returns true, then it's allowed to access that resource/page
   // It has to return a boolean (true/false)

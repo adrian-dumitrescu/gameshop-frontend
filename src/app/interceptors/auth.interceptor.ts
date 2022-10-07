@@ -13,6 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private authenticationService: AuthenticationService) {}
 
+  // Lets these two requests pass and intercepts any other request
   intercept(originalHttpRequest: HttpRequest<any>, httpHandler: HttpHandler): Observable<HttpEvent<any>> {
     if (originalHttpRequest.url.includes(`${this.authenticationService.apiServerURL}/user/login`)) {
       return httpHandler.handle(originalHttpRequest);

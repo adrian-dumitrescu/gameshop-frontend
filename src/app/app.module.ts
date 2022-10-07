@@ -18,6 +18,10 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthenticationGuard } from './guard/authentication.guard';
 import { NotificationModule } from './notification.module';
 import { NotificationService } from './services/notification.service';
+import { UserSettingsComponent } from './components/user-settings/user-settings.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 
 
@@ -31,7 +35,11 @@ import { NotificationService } from './services/notification.service';
     SignInComponent,
     ModalComponent,
     MainComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    UserSettingsComponent,
+    UserProfileComponent,
+    ShoppingCartComponent,
+    CheckoutComponent
   ],
   imports: [
     NotificationModule,

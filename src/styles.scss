@@ -2253,7 +2253,7 @@ iframe {
 }
 
 .mpl-navbar-top .mpl-navbar-right>.mpl-dropdown>.mpl-dropdown-menu {
-    right: 0
+    right: 0;
 }
 
 .mpl-navbar-top .mpl-navbar-toggle {
@@ -2495,6 +2495,7 @@ iframe {
 }
 
 .mpl-navbar .mpl-dropdown-menu {
+    // width: max-content;
     position: absolute;
     top: 100%;
     padding: 25px 30px;
@@ -9053,6 +9054,7 @@ a.mpl-post-item:not(.mpl-post-overlay):hover .mpl-post-title {
 .modal-dialog {
     position: relative;
     width: auto;
+    max-width: max-content;
     pointer-events: none;
     margin-top: 300px;
 
@@ -9124,6 +9126,7 @@ a.mpl-post-item:not(.mpl-post-overlay):hover .mpl-post-title {
 .mpl-banner {
     position: relative;
     display: flex;
+    //margin-top: 20px; // edit
     // padding-left: 25%;
     align-items: center;
     width: 100%;
