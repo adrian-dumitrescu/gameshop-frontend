@@ -14,8 +14,11 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div *ngIf="this.userCreatedStatus" class="alert alert-success" role="alert">
+                        <div *ngIf="this.registrationSuccess" class="alert alert-success" role="alert">
                             <strong>Success!</strong> Your account has been sucessfully created.
+                        </div>
+                        <div *ngIf="this.showNotificationBanner" class="alert" role="alert">
+                            <strong>Error!</strong> {{this.notificationMessage}}
                         </div>
                         <div class="mpl-sign-form" data-sr="sign" data-sr-interval="100" data-sr-duration="1000"
                             data-sr-distance="20">

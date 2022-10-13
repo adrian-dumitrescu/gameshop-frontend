@@ -1,4 +1,5 @@
 import { Role } from "../model/role";
+import { ActivationKey } from "../model/activation-key";
 
 export class User {
     id!: number;
@@ -6,11 +7,16 @@ export class User {
     lastName!: string;
     email!: string;
     password!: string;
-    profileImageUrl!: string;
     joinDate!: Date;
     isNotLocked!: boolean;
     isEnabled!: boolean;
     roles!: Role[];
+    activationKeys!: ActivationKey[];
+    profileImageUrl!: string;
+    nickname!: string;
+    country!: string;
+    gender!: string;
+    age!: number;
 
 constructor(){
     this.firstName = '';
@@ -20,7 +26,6 @@ constructor(){
     this.isNotLocked = false;
     this.roles = [];
     this.email = '';
-
 }
 }
 

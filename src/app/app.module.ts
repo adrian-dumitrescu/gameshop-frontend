@@ -23,6 +23,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 
+import { UserInventoryComponent } from './components/user-inventory/user-inventory.component';
+
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     UserSettingsComponent,
     UserProfileComponent,
     ShoppingCartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    UserInventoryComponent
   ],
   imports: [
     NotificationModule,

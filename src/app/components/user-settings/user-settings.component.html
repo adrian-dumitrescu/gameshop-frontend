@@ -1,4 +1,5 @@
 <app-user></app-user>
+
 <!-- TABS -->
 <div class="container" data-sr="" data-sr-duration="1000" data-sr-distance="20"
     style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
@@ -18,7 +19,7 @@
                 </div>
                 <div class="swiper-slide" role="group" aria-label="5 / 6">
                     <li>
-                        <a routerLink="/Inventory"> Inventory </a>
+                        <a routerLink="/inventory"> Inventory </a>
                     </li>
                 </div>
                 <!-- <div class="swiper-slide" role="group" aria-label="3 / 6">
@@ -66,23 +67,27 @@
                                 </div>
                                 <button class="mpl-link mt-30">Change Password</button>
                             </div>
-                            <div class="mpl-snippet-fill" data-sr-item="user-setting"
-                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
-                                <h2>Email</h2>
-                                <div class="row hgap-sm vgap-sm">
-                                    <div class="col-12 col-sm-6">
-                                        <label for="setting_email">Current Email:</label><input class="form-control"
-                                            type="email" id="setting_email" name="setting_email" value="{{user.email}}"
-                                            disabled=""><span class="form-control-bg"></span>
+                            <form action="" [formGroup]="formChangeEmail" (ngSubmit)="onChangeEmail()">
+                                <div class="mpl-snippet-fill" data-sr-item="user-setting"
+                                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                    <h2>Email</h2>
+                                    <div class="row hgap-sm vgap-sm">
+                                        <div class="col-12 col-sm-6">
+                                            <label for="setting_email">Current Email:</label>
+                                            <input class="form-control" type="email" id="setting_email"
+                                                name="setting_email" value="{{user.email}}" disabled=""><span
+                                                class="form-control-bg"></span>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <label for="setting_new_email">New Email:</label>
+                                            <input formControlName="newEmail" class="form-control" type="email"
+                                                id="setting_new_email" name="setting_new_email"
+                                                placeholder="New Email"><span class="form-control-bg"></span>
+                                        </div>
                                     </div>
-                                    <div class="col-12 col-sm-6">
-                                        <label for="setting_new_email">New Email:</label><input class="form-control"
-                                            type="email" id="setting_new_email" name="setting_new_email"
-                                            placeholder="New Email"><span class="form-control-bg"></span>
-                                    </div>
+                                    <button type="submit" class="mpl-link mt-30">Change Email</button>
                                 </div>
-                                <button class="mpl-link mt-30">Change Email</button>
-                            </div>
+                            </form>
                             <div class="mpl-snippet-fill" data-sr-item="user-setting"
                                 style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
                                 <h2>Phone Number</h2>

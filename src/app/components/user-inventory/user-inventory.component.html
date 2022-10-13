@@ -1,0 +1,207 @@
+<app-user></app-user>
+<!-- TABS -->
+<div class="container" data-sr="" data-sr-duration="1000" data-sr-distance="20"
+    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+    <ul class="mpl-user-navigation mpl-carousel" data-gap="0" data-slides="auto">
+        <div
+            class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
+            <div class="swiper-wrapper" id="swiper-wrapper-6b310a6364dd3e127" aria-live="polite">
+                <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 6">
+                    <li>
+                        <a routerLink="/profile"> Profile </a>
+                    </li>
+                </div>
+                <div class="swiper-slide" role="group" aria-label="4 / 6">
+                    <li>
+                        <a routerLink="/settings"> Settings </a>
+                    </li>
+                </div>
+                <div class="swiper-slide" role="group" aria-label="5 / 6">
+                    <li class="active">
+                        <a routerLink="/inventory"> Inventory </a>
+                    </li>
+                </div>
+                <!-- <div class="swiper-slide" role="group" aria-label="3 / 6">
+                    <li>
+                        <a href="user-messages.html"> Messages<span class="badge badge-brand">8</span>
+                        </a>
+                    </li>
+                </div> -->
+            </div><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
+
+    </ul>
+</div>
+<!-- CONTENT -->
+<div class="mpl-box-md">
+    <div class="container">
+        <div class="row hgap-lg vgap-lg">
+            <div class="col mpl-content mpl-isotope">
+
+                <!-- INVENTORY -->
+                <h2>Inventory</h2>
+
+                <table
+                    class="table mpl-table-responsive-sm cyberpress-table cyberpress-team-players table-hover mb-0 mpl-table-product">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span class="name">Product</span></button></th>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span class="name">Price</span></button></th>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span class="name">Keys</span></button></th>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span class="name">Action</span></button></th>
+
+                            <!-- <th></th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cyberpress-table-item-image cyberpress-table-item-small">
+                                <a href="esports-single-player.html">
+                                    <img src={{this.image}} alt="" class="cyberpress-team-players-thumb">
+                                </a>
+                            </td>
+                            <td class="cyberpress-table-item-game">
+                                <a href="/game-route/keys">Overwatch 2</a>
+                                <div class="cyberpress-player-team-dates">Blizzard Entertainment</div>
+                            </td>
+                            <td class="mpl-table-price" data-title="Price">
+                                <span class="mpl-price" *ngIf="this.discountApplied;else noDiscountApplied"> $84.99 <span>$114.99</span></span>
+                                <ng-template #noDiscountApplied>
+                                    <span #this.discount>$114.99</span>
+                                </ng-template>
+                                
+                            </td>
+                            <td>26</td>
+                            <td>
+                                <!-- <button type="button" class="btn btn-md btn-secondary" data-bs-toggle="tooltip"
+                                    data-bs-placement="top" title=""
+                                    data-bs-original-title="Tooltip on top">EDIT</button> -->
+                                    <div class="col-12">
+                                        <button class="btn btn-md">EDIT</button>
+                                    </div>
+                            </td>
+
+                            <!-- <td></td> -->
+                        </tr>
+
+                        <!-- <div id="{{this.one}}" class="collapse" role="tabpanel" data-bs-parent="#accordion"style="">
+                            <div class="collapse-content">
+                                Key
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="accordion mb-60" id="accordion" role="tablist" aria-multiselectable="true"> -->
+
+
+
+                        <!-- </div> -->
+                        <!-- <tr>
+                            <td class="cyberpress-table-item-image cyberpress-table-item-small">
+                                <a href="esports-single-player.html">
+                                    <img src="assets/images/esports/player-bowman_76x76.jpg" alt="" class="cyberpress-team-players-thumb">
+                                </a>
+                            </td>
+                            <td class="cyberpress-table-item-nickname">
+                                <a href="esports-single-player.html">Bowman</a>
+                            </td>
+                            <td data-title="Name">Viggo Hanson</td>
+                            <td data-title="Role">Player</td>
+                            <td data-title="Gender">Male</td>
+                            <td data-title="Age">27</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+                <br>
+                <div class="col-12">
+                    <button class="btn btn-md">Add Key</button>
+                </div>
+            </div>
+            <div class="col-auto mpl-sidebar" data-sr="widget" data-sr-duration="1200" data-sr-distance="20">
+                <div class="mpl-widget mpl-widget-search">
+                    <div data-sr-item="widget"
+                        style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        <form action="#">
+                            <input type="text" class="form-control" name="s" placeholder="Enter a search term">
+                            <div class="form-control-bg"></div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <div class="mpl-widget mpl-widget-price">
+                    <span class="irs irs--flat js-irs-0"><span class="irs"><span class="irs-line" tabindex="0"></span><span class="irs-min" style="visibility: visible;">$0</span><span class="irs-max" style="visibility: visible;">$150</span><span class="irs-from" style="visibility: visible; left: 13.0657%;">$25</span><span class="irs-to" style="visibility: visible; left: 78.5156%;">$125</span><span class="irs-single" style="visibility: hidden; left: 35.3785%;">$25 — $125</span></span><span class="irs-grid"></span><span class="irs-bar" style="left: 16.8966%; width: 66.2069%;"></span><span class="irs-shadow shadow-from" style="display: none;"></span><span class="irs-shadow shadow-to" style="display: none;"></span><span class="irs-handle from" style="left: 16.5517%;"><i></i><i></i><i></i></span><span class="irs-handle to type_last" style="left: 82.7586%;"><i></i><i></i><i></i></span></span><input class="mpl-rangeslider irs-hidden-input" type="text" data-min="0" data-max="150" data-from="25" data-to="125" data-type="double" data-prefix="$" value="" tabindex="-1" readonly="">
+                </div> -->
+                <div class="mpl-widget mpl-widget-categories">
+                    <h4 class="mpl-widget-title" data-sr-item="widget"
+                        style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        Categories</h4>
+                    <ul class="list-unstyled" data-sr-item="widget"
+                        style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        <li><a href="#">All</a></li>
+                        <li><a href="#">Audio</a></li>
+                        <li><a href="#">Photo</a></li>
+                        <li><a href="#">Video</a></li>
+                        <li><a href="#">Controllers</a></li>
+                    </ul>
+                </div>
+                <div class="mpl-widget mpl-widget-products">
+                    <h4 class="mpl-widget-title" data-sr-item="widget"
+                        style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        Popular Products</h4>
+                    <ul class="list-unstyled" data-sr-item="widget"
+                        style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        <li>
+                            <a href="shop-product.html" class="mpl-product-widget mpl-product-item">
+                                <span class="mpl-product-image">
+                                    <span class="mpl-image">
+                                        <img src="assets/images/dark/product-260x200.jpg" alt="">
+                                    </span>
+                                </span>
+                                <span class="mpl-product-content">
+                                    <span class="mpl-product-title text-truncate h5">Gamepad MPL</span>
+                                    <span class="mpl-price"> $120.00 </span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="shop-product.html" class="mpl-product-widget mpl-product-item">
+                                <span class="mpl-product-image">
+                                    <span class="mpl-image">
+                                        <img src="assets/images/dark/product-2-260x200.jpg" alt="">
+                                    </span>
+                                </span>
+                                <span class="mpl-product-content">
+                                    <span class="mpl-product-title text-truncate h5">Headphones MPL</span>
+                                    <span class="mpl-price"> $84.99 <span>$114.99</span>
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="shop-product.html" class="mpl-product-widget mpl-product-item">
+                                <span class="mpl-product-image">
+                                    <span class="mpl-image">
+                                        <img src="assets/images/dark/product-3-260x200.jpg" alt="">
+                                    </span>
+                                </span>
+                                <span class="mpl-product-content">
+                                    <span class="mpl-product-title text-truncate h5">Headphones MPS</span>
+                                    <span class="mpl-price"> $74.99 </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mpl-widget mpl-widget-instagram">
+                    <h4 class="mpl-widget-title" data-sr-item="widget"
+                        style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        Instagram</h4>
+                    <div class="mpl-instagram row hgap-xs vgap-xs" data-sr-item="widget" data-instagram-quality="md"
+                        data-instagram-column-class="col-6 col-sm-4" data-instagram-count="6"
+                        style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        <div class="col-12">Failed to fetch data</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

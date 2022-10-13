@@ -37,6 +37,14 @@ export class UserComponent implements OnInit {
     });
   }
 
+  public showNameOrNickname(): string{
+    if(this.user.nickname == null || ''){
+      return this.user.firstName;
+    }else{
+      return this.user.nickname;
+    }
+  }
+
 
   private roleToString(): string {
     if (this.isAdmin) {

@@ -124,6 +124,17 @@ export class AuthenticationService {
     return JSON.parse(localStorage.getItem('user') || '{}');
   }
 
+  public addUsersToLocalCache(users: User[]): void {
+    localStorage.setItem('users', JSON.stringify(users));
+  }
+
+  public getUsersFromLocalCache() {
+    if (localStorage.getItem('users')) {
+        return JSON.parse(localStorage.getItem('users') || '{}');
+    }
+    return null;
+  }
+
 
 
 

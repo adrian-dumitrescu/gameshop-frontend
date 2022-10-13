@@ -18,7 +18,7 @@
                 </div>
                 <div class="swiper-slide" role="group" aria-label="5 / 6">
                     <li>
-                        <a routerLink="/Inventory"> Inventory </a>
+                        <a routerLink="/inventory"> Inventory </a>
                     </li>
                 </div>
                 <!-- <div class="swiper-slide" role="group" aria-label="3 / 6">
@@ -37,31 +37,87 @@
     <div class="container">
         <div class="row hgap-lg vgap-lg">
             <div class="col-lg mpl-content" data-sr="user-profile" data-sr-duration="1000" data-sr-distance="20">
+
                 <h2 class="h3" data-sr-item="user-profile"
                     style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
                     {{user.firstName}} {{user.lastName}}</h2>
-                <table class="table mpl-table-profile" data-sr-item="user-profile"
-                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
-                    <tbody>
-                        <tr>
-                            <td>Hometown</td>
-                            <td><a href="#">New York</a></td>
-                        </tr>
-                        <tr>
-                            <td>Relationship status</td>
-                            <td><a href="#">Married</a></td>
-                        </tr>
-                        <tr>
-                            <td>Studied at</td>
-                            <td><a href="#">New York University, NYU</a></td>
-                        </tr>
-                        <tr>
-                            <td>Languages</td>
-                            <td><a href="#">English</a>, <a href="#">Japan</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h2 class="h3 mt-60" data-sr-item="user-profile"
+                <form action="" [formGroup]="userCardForm" (ngSubmit)="onCardSubmit()">
+                    <table class="table mpl-table-profile" data-sr-item="user-profile"
+                        style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        <tbody>
+                            <tr>
+                                <td>First Name</td>
+                                <td>
+                                    <input formControlName="firstName" type="text" placeholder="{{this.user.firstName}}"
+                                        class="form-control" style="padding:unset;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Last Name</td>
+                                <td>
+                                    <input formControlName="lastName" type="text" placeholder="{{this.user.lastName}}"
+                                        class="form-control" style="padding:unset;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Nickname</td>
+                                <td>
+                                    <input formControlName="nickname" type="text"
+                                        placeholder="{{this.user.nickname != null ? this.user.nickname : 'Your Nickname'}}"
+                                        class="form-control" style="padding:unset;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td>
+                                    <!-- dropdown -->
+                                    <select formControlName="gender" class="form-select" id="gender" name="gender">
+                                        <option *ngIf="userHasSetGender();else hideSelectGender" value="">Select Gender
+                                        </option>
+                                        <ng-template #hideSelectGender>
+                                            <option value="" [ngValue]="">{{this.user.gender}}</option>
+                                        </ng-template>
+                                        <option *ngFor="let userGender of genderMapping;" [ngValue]="userGender.value">
+                                            {{this.userGender.value}}</option>
+                                    </select>
+                                    <span class="form-control-bg"></span>
+                                    <!-- dropdown end -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Country</td>
+                                <!-- <td><a href="#">{{this.user.country}}</a></td> -->
+                                <td>
+                                    <!-- dropdown -->
+                                    <select formControlName="country" class="form-select" id="country" name="country">
+                                        <option *ngIf="userHasSetCountry();else hideSelectCountry" value="">Select
+                                            Country</option>
+                                        <ng-template #hideSelectCountry>
+                                            <option value="" [ngValue]="">{{this.user.country}}</option>
+                                        </ng-template>
+                                        <option *ngFor="let userCountry of countryMapping;" [ngValue]="userCountry.value">
+                                            {{this.userCountry.value}}</option>
+                                    </select>
+                                    <span class="form-control-bg"></span>
+                                    <!-- dropdown end -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Age</td>
+                                <td>
+                                    <input formControlName="age" type="text" value="{{this.user.age}}"
+                                        placeholder="{{this.user.age != null ? this.user.age: 'Your Age'}}"
+                                        class="form-control" style="padding:unset;">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h6 *ngIf="(userCardForm?.invalid && userCardForm?.touched)" class="mb-0"><span class="badge badge-danger">Info</span> Please complete all the fields with valid
+                        data </h6>
+                    <button type="submit" [disabled]="(userCardForm.valid)?false:true" class="mpl-link mt-30">Save
+                        Changes</button>
+                </form>
+                <!-- <h2 class="h3 mt-60" data-sr-item="user-profile"
                     style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
                     Contact Information</h2>
                 <table class="table mpl-table-profile" data-sr-item="user-profile"
@@ -84,12 +140,12 @@
                             <td><a href="#">#twitter</a></td>
                         </tr>
                     </tbody>
-                </table>
-                <h2 class="h3 mt-60" data-sr-item="user-profile" data-sr-id="10"
-                    style="visibility: visible; opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 20, 0, 1);">
+                </table> -->
+                <!-- <h2 class="h3 mt-60" data-sr-item="user-profile" data-sr-id="10"
+                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 20, 0, 1);">
                     Personal Information</h2>
                 <table class="table mpl-table-profile" data-sr-item="user-profile" data-sr-id="11"
-                    style="visibility: visible; opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 20, 0, 1);">
+                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 20, 0, 1);">
                     <tbody>
                         <tr>
                             <td>Current City</td>
@@ -113,10 +169,12 @@
                             </td>
                         </tr>
                     </tbody>
-                </table>
+                </table> -->
+
+
             </div>
             <div class="col-auto-lg mpl-sidebar" data-sr="widget" data-sr-duration="1200" data-sr-distance="20">
-                <div class="mpl-widget mpl-widget-about">
+                <!-- <div class="mpl-widget mpl-widget-about">
                     <h4 class="mpl-widget-title">About</h4>
                     <div data-sr-item="widget"
                         style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
@@ -124,6 +182,55 @@
                             consequat volumus ... et ille in urbe ista licet? Et infernus, ubi tu non Virginiae
                             ornare vel ipsum. Ut enim Albuquerque et ille eum iure hic, et ego ducam te ad
                             iustitiam.</p>
+                    </div>
+                </div> -->
+                <h4 class="mpl-widget-title">Card</h4>
+                <div class="col-12 col-sm-6 col-xl-4" data-sr-item="players"
+                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s; width: 100%;">
+                    <div class="cyberpress-player">
+                        <div class="cyberpress-player-thumbnail">
+                            <a href="esports-single-player.html">
+                                <span class="mpl-image">
+                                    <img [src]="user.profileImageUrl" alt="">
+                                </span>
+                            </a>
+                        </div>
+                        <h2 class="cyberpress-player-title h4">
+                            <a href="esports-single-player.html">{{showNameOrNickname()}}</a>
+                        </h2>
+                        <ul class="cyberpress-player-info">
+                            <li>
+                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z">
+                                    </path>
+                                </svg>{{this.user.firstName}} {{this.user.lastName}}
+                            </li>
+                            <li>
+                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M8 14C8 14 9.5 16 12 16C14.5 16 16 14 16 14M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z">
+                                    </path>
+                                    <path d="M9 9H9.01"></path>
+                                    <path d="M15 9H15.01"></path>
+                                </svg>{{this.user.gender != null ? this.user.gender: 'Gender'}}
+                            </li>
+                            <li>
+                                <img src="../assets/country-icon-4x3/{{getUserCountrySvg()}}"
+                                    class="cyberpress-flag-img" alt="ad">{{this.user.country != null ?
+                                this.user.country: 'Country'}}
+                            </li>
+                            <li>
+                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21M17 11L19 13L23 9M12.5 7C12.5 9.20914 10.7091 11 8.5 11C6.29086 11 4.5 9.20914 4.5 7C4.5 4.79086 6.29086 3 8.5 3C10.7091 3 12.5 4.79086 12.5 7Z">
+                                    </path>
+                                </svg>{{this.user.age != null ? this.user.age + ' years old' : 'Age'}}
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <!-- <div class="mpl-widget mpl-widget-location">

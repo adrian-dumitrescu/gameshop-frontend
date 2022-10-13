@@ -19,7 +19,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
   user!: User;
 
   constructor(private userService: UserService,
-    private router: Router, private route: ActivatedRoute,
+    private router: Router, 
+    private route: ActivatedRoute,
     private authService: AuthenticationService,
     private notificationService: NotificationService) { }
 
@@ -117,6 +118,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
         next: (response: User) => {
           this.sendNotification(NotificationType.SUCCESS, `A new account was created for ${response.firstName}.
           Please check your email for password to log in.`);
+          this.userCreatedSuccesfully = true;
           this.router.navigate([`/sign-in`, this.userCreatedSuccesfully]);
         },
         error: (errorResponse: HttpErrorResponse) => {

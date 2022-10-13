@@ -21,7 +21,9 @@ export class SignInComponent implements OnInit, OnDestroy {
   public loginForm!: FormGroup;
   private subscriptions: Subscription[] = [];
   rolee!: Role;
-  userCreatedStatus!: boolean;
+  registrationSuccess!: boolean;
+  showNotificationBanner!: boolean;
+  notificationMessage!: string;
 
   constructor(private authService: AuthenticationService, 
     private userService: UserService,
@@ -36,13 +38,15 @@ export class SignInComponent implements OnInit, OnDestroy {
     //this.ngAfterViewInit();
     //this.userCreatedStatus = this.signUpComponent.getUserCreationStatus();
     //console.log(this.signUpComponent.getUserCreationStatus());
-    this.loadRegisterSuccessMessage();
+    //this.loadRegisterSuccessMessage();
 
     if (this.authService.isUserLoggedIn()) {
       this.router.navigate(['/main']);
-    } else {
-      this.router.navigateByUrl('/sign-in');
-    }
+    } else if(this.activatedRoute != null){
+      this.registerSuccessMessageParam();
+    }else{
+      this.router.navigateByUrl('/sign-in')
+    };
     //console.log(this.userCreatedStatus);
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
@@ -61,8 +65,8 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
 
-  loadRegisterSuccessMessage(): void {
-    this.userCreatedStatus = this.activatedRoute.snapshot.params['userCreatedStatus'];
+  registerSuccessMessageParam(): void {
+    this.registrationSuccess = this.activatedRoute.snapshot.params['registrationSuccess'];
   }
 
 
@@ -118,12 +122,12 @@ export class SignInComponent implements OnInit, OnDestroy {
             this.authService.addUserToLocalCache(response.body);
           }
           this.authService.setIsAuthenticated(true);
-          this.sendErrorNotification(NotificationType.SUCCESS, "You have succesfully logged in");
+          this.sendNotification(NotificationType.SUCCESS, "You have succesfully logged in");
           this.goToMainPage();
           
         }, // completeHandler
         error: (errorResponse: HttpErrorResponse) => {
-          this.sendErrorNotification(NotificationType.ERROR, errorResponse.error.message);
+          this.sendNotification(NotificationType.ERROR, errorResponse.error.message);
         }
       }
       )
@@ -131,11 +135,15 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
 
-  private sendErrorNotification(notificationType: NotificationType, message: string): void {
+  private sendNotification(notificationType: NotificationType, message: string): void {
     if (message) {
       this.notificationService.notify(notificationType, message);
+      this.notificationMessage = message;
+      this.showNotificationBanner = true;
     } else {
       this.notificationService.notify(notificationType, 'An error occurred. Please try again.');
+      this.notificationMessage = 'An error occurred. Please try again.';
+      this.showNotificationBanner = true;
     }
   }
 

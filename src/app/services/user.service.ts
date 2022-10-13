@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../model/user';
 import { CustomHttpResponse } from '../interfaces/custom-http-response';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -23,14 +24,13 @@ export class UserService {
     return this.http.get<User[]>(`${this.apiServerURL}/user/all`);
   }
 
-  //HTTP POST REQUEST
-  public createUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiServerURL}/user/register`, user);
-  }
-
   //HTTP PUT(UPDATE) REQUEST
   public updateUser(user: User): Observable<User> {
     return this.http.put<User>(`${this.apiServerURL}/user/update`, user);
+  }
+
+  public updateUserCard(userCard: FormData): Observable<User> {
+    return this.http.post<User>(`${this.apiServerURL}/user/update/card`, userCard);
   }
 
   //HTTP DELETE REQUEST
@@ -46,17 +46,6 @@ export class UserService {
     return this.http.get<User>(`${this.apiServerURL}/user/find/${userId}`);
   }
 
-  // //HTTP POST REQUEST
-  // public login(userEmail: String,userPassword:String): Observable<User> {
-  //   return this.http.get<User>(`${this.apiServerURL}/user/login/${userEmail}/${userPassword}`)
-  //   //return this.http.get<User>(this.apiServerURL + "/user/login/" + userEmail + "/"+ userPassword);
-  // }
-
-   //HTTP POST REQUEST
-   public login(userEmail: String,userPassword:String): Observable<User> {
-    return this.http.get<User>(`${this.apiServerURL}/user/login/${userEmail}/${userPassword}`)
-    //return this.http.get<User>(this.apiServerURL + "/user/login/" + userEmail + "/"+ userPassword);
-  }
 
   public addUsersToLocalCache(users: User[]): void {
     localStorage.setItem('users', JSON.stringify(users));
@@ -69,9 +58,9 @@ export class UserService {
     return null;
   }
 
-  public createUserFormDate(loggedInUsername: string, user: User, profileImage: File): FormData {
+  public createUserFormDate(loggedInEmail: string, user: User, profileImage: File): FormData {
     const formData = new FormData();
-    formData.append('currentUsername', loggedInUsername);
+    formData.append('currentEmail', loggedInEmail);
     formData.append('firstName', user.firstName);
     formData.append('lastName', user.lastName);
     formData.append('email', user.email);

@@ -13,6 +13,7 @@ import { UserSettingsComponent } from './components/user-settings/user-settings.
 import { AuthenticationGuard } from './guard/authentication.guard';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { UserInventoryComponent } from './components/user-inventory/user-inventory.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'main', pathMatch: 'full'}, // set default path
@@ -22,9 +23,10 @@ const routes: Routes = [
   {path:'profile',component:UserProfileComponent, canActivate: [AuthenticationGuard]},
   // {path:'profile/:profileImage',component:UserProfileComponent, canActivate: [AuthenticationGuard]},
   {path:'settings',component:UserSettingsComponent, canActivate: [AuthenticationGuard]},
+  {path:'inventory',component:UserInventoryComponent, canActivate: [AuthenticationGuard]},
   {path:'cart',component:ShoppingCartComponent},
   {path:'checkout',component:CheckoutComponent},
-  {path:'sign-in/:userCreatedStatus',component:SignInComponent},
+  {path:'sign-in/:registrationSuccess',component:SignInComponent},
   {path:'search-bar',component:SearchBarComponent},
   {path: '404', component: PageNotFoundComponent},
   {path: '**', redirectTo: '/404'}
