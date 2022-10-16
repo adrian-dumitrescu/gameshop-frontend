@@ -1,8 +1,8 @@
 import { ActivationKey } from "../model/activation-key";
 
-export class Product {
+export class ProductDetails {
     id!: number;
-    name!: string;
+    prooductName!: string;
     publisher!: string;
     activationKeys!: ActivationKey[];
 }

@@ -48,10 +48,7 @@ export class SignInComponent implements OnInit, OnDestroy {
       this.router.navigateByUrl('/sign-in')
     };
     //console.log(this.userCreatedStatus);
-    this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    })
+    this.getLoginForm();
 
         // this.loginForm = new FormGroup({
     //   email: new FormControl(['', Validators.required]),
@@ -64,8 +61,14 @@ export class SignInComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
+  public getLoginForm(){
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    })
+  }
 
-  registerSuccessMessageParam(): void {
+  public registerSuccessMessageParam(): void {
     this.registrationSuccess = this.activatedRoute.snapshot.params['registrationSuccess'];
   }
 
@@ -148,7 +151,7 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
 
-  goToMainPage() {
+  public goToMainPage() {
     this.router.navigate([`/main`]);
   }
 

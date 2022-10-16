@@ -47,110 +47,75 @@
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade active show" id="general">
-                        <form action="#" data-sr="user-setting" data-sr-duration="1000" data-sr-distance="20">
+                        <form action="" [formGroup]="formChangePassword" (ngSubmit)="onChangePassword()">
                             <div class="mpl-snippet-fill" data-sr-item="user-setting"
                                 style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
                                 <h2>Change Password</h2>
                                 <div class="row hgap-sm vgap-sm">
                                     <div class="col-12 col-sm-6">
-                                        <label for="setting_password">Current Password:</label><input
+                                        <label for="setting_password">Current Password:</label>
+                                        <input formControlName="currentPassword"
+                                            [class.is-invalid]="getCurrentPassword?.invalid && getCurrentPassword?.touched"
                                             class="form-control" type="password" id="setting_password"
                                             name="setting_password" placeholder="Current Password"><span
                                             class="form-control-bg"></span>
+                                        <div
+                                            *ngIf="(getCurrentPassword?.invalid && getCurrentPassword?.touched) || getCurrentPassword?.dirty">
+                                            <small *ngIf="getCurrentPassword?.errors?.['pattern']" class="text-danger">
+                                                Please
+                                                provide your current password
+                                            </small>
+                                        </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
-                                        <label for="setting_new_password">New Password:</label><input
+                                        <label for="setting_new_password">New Password:</label>
+                                        <input formControlName="newPassword"
+                                            [class.is-invalid]="getNewPassword?.invalid && getNewPassword?.touched"
                                             class="form-control" type="password" id="setting_new_password"
                                             name="setting_new_password" placeholder="New Password"><span
                                             class="form-control-bg"></span>
-                                    </div>
-                                </div>
-                                <button class="mpl-link mt-30">Change Password</button>
-                            </div>
-                            <form action="" [formGroup]="formChangeEmail" (ngSubmit)="onChangeEmail()">
-                                <div class="mpl-snippet-fill" data-sr-item="user-setting"
-                                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
-                                    <h2>Email</h2>
-                                    <div class="row hgap-sm vgap-sm">
-                                        <div class="col-12 col-sm-6">
-                                            <label for="setting_email">Current Email:</label>
-                                            <input class="form-control" type="email" id="setting_email"
-                                                name="setting_email" value="{{user.email}}" disabled=""><span
-                                                class="form-control-bg"></span>
-                                        </div>
-                                        <div class="col-12 col-sm-6">
-                                            <label for="setting_new_email">New Email:</label>
-                                            <input formControlName="newEmail" class="form-control" type="email"
-                                                id="setting_new_email" name="setting_new_email"
-                                                placeholder="New Email"><span class="form-control-bg"></span>
+                                        <div
+                                            *ngIf="(getNewPassword?.invalid && getNewPassword?.touched) || getNewPassword?.dirty">
+                                            <small *ngIf="getNewPassword?.errors?.['pattern']" class="text-danger">
+                                                Please
+                                                provide a
+                                                valid password
+                                            </small>
                                         </div>
                                     </div>
-                                    <button type="submit" class="mpl-link mt-30">Change Email</button>
                                 </div>
-                            </form>
-                            <div class="mpl-snippet-fill" data-sr-item="user-setting"
-                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
-                                <h2>Phone Number</h2>
-                                <div class="row hgap-sm vgap-sm">
-                                    <div class="col-12 col-sm-6">
-                                        <label for="setting_phone">Current Phone:</label><input class="form-control"
-                                            type="text" id="setting_phone" name="setting_phone" value="+1 *** ** ** 11"
-                                            disabled=""><span class="form-control-bg"></span>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <label for="setting_new_phone">New Phone:</label><input class="form-control"
-                                            type="text" id="setting_new_phone" name="setting_new_phone"
-                                            placeholder="New Phone"><span class="form-control-bg"></span>
-                                    </div>
-                                </div>
-                                <button class="mpl-link mt-30">Change Phone</button>
-                            </div>
-                            <div class="mpl-snippet-fill" data-sr-item="user-setting" data-sr-id="9"
-                                style="visibility: visible; opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 20, 0, 1);">
-                                <h2>Language</h2>
-                                <select class="form-control custom-select" id="setting_language"
-                                    name="setting_language">
-                                    <option>Azərbaycan dili</option>
-                                    <option>Bahasa Indonesia</option>
-                                    <option>Bosanski</option>
-                                    <option>Dansk</option>
-                                    <option>Deutsch</option>
-                                    <option>Eesti</option>
-                                    <option selected="">English</option>
-                                    <option>Español</option>
-                                    <option>Esperanto</option>
-                                    <option>Français</option>
-                                    <option>Hrvatski</option>
-                                    <option>Italiano</option>
-                                    <option>Kiswahili</option>
-                                    <option>Latviešu</option>
-                                    <option>Lietuvių</option>
-                                    <option>Magyar</option>
-                                    <option>Moldovenească</option>
-                                    <option>Nederlands</option>
-                                    <option>Norsk</option>
-                                    <option>O‘zbek</option>
-                                    <option>Polski</option>
-                                    <option>Português</option>
-                                    <option>Română</option>
-                                    <option>Shqip</option>
-                                    <option>Slovenščina</option>
-                                    <option>Suomi</option>
-                                    <option>Svenska</option>
-                                    <option>Tagalog</option>
-                                </select><span class="form-control-bg"></span>
-                                <button class="mpl-link mt-30">Save Regional Settings</button>
-                            </div>
-                            <div class="mpl-snippet-fill" data-sr-item="user-setting" data-sr-id="10"
-                                style="visibility: visible; opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 20, 0, 1);">
-                                <h2>Appearance</h2>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="setting_font"
-                                        name="setting_font"><label class="form-check-label" for="setting_font">Use Large
-                                        Fonts</label>
-                                </div>
+                                <button type="submit" class="mpl-link mt-30">Change Password</button>
                             </div>
                         </form>
+                        <form action="" [formGroup]="formChangeEmail" (ngSubmit)="onChangeEmail()">
+                            <div class="mpl-snippet-fill" data-sr-item="user-setting"
+                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                <h2>Email</h2>
+                                <div class="row hgap-sm vgap-sm">
+                                    <div class="col-12 col-sm-6">
+                                        <label for="setting_email">Current Email:</label>
+                                        <input class="form-control" type="email" id="setting_email" name="setting_email"
+                                            value="{{user.email}}" disabled=""><span class="form-control-bg"></span>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <label for="setting_new_email">New Email:</label>
+                                        <input formControlName="newEmail"
+                                            [class.is-invalid]="getNewEmail?.invalid && getNewEmail?.touched"
+                                            class="form-control" class="form-control" type="email"
+                                            id="setting_new_email" name="setting_new_email"
+                                            placeholder="New Email"><span class="form-control-bg"></span>
+                                        <div
+                                            *ngIf="(getNewEmail?.invalid && getNewEmail?.touched) || getNewEmail?.dirty">
+                                            <small *ngIf="getNewEmail?.errors?.['pattern']" class="text-danger"> Please
+                                                provide a valid email address
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="mpl-link mt-30">Change Email</button>
+                            </div>
+                        </form>
+
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="notifications">
                         <form action="#">
@@ -185,7 +150,7 @@
                 </div>
             </div>
             <div class="col-auto-lg mpl-sidebar" data-sr="widget" data-sr-duration="1200" data-sr-distance="20">
-                <div class="mpl-widget mpl-widget-about">
+                <!-- <div class="mpl-widget mpl-widget-about">
                     <h4 class="mpl-widget-title">About</h4>
                     <div data-sr-item="widget"
                         style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
@@ -193,7 +158,8 @@
                             volumus ... et ille in urbe ista licet? Et infernus, ubi tu non Virginiae ornare vel ipsum.
                             Ut enim Albuquerque et ille eum iure hic, et ego ducam te ad iustitiam.</p>
                     </div>
-                </div>
+                </div> -->
+                <app-user-card></app-user-card>
                 <!-- <div class="mpl-widget mpl-widget-location">
                     <h4 class="mpl-widget-title" data-sr-item="widget" style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">Location</h4>
                     <div class="mpl-widget-map" data-sr-item="widget" style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">

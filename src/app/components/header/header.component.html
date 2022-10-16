@@ -202,10 +202,10 @@
         <!-- ****************************************** USER LOGGED IN ****************************************** -->
         <li *ngIf="isAuthenticated" class="mpl-dropdown" style="opacity: 1; transform: translateY(0px);">
           <a routerLink="/profile" class="mpl-nav-link" role="button">
-            <span class="mpl-nav-link-name">{{user.firstName}} {{user.lastName}}<span class="badge badge-brand">8</span>
+            <span class="mpl-nav-link-name">{{showFullNameOrNickname()}}<span class="badge badge-brand">8</span>
             </span>
           </a>
-          <div class="mpl-dropdown-menu">
+          <div class="mpl-dropdown-menu" style="min-width: 200px;">
             <div class="row hgap-sm vgap-sm">
               <div class="mpl-media-head col-12">
                 <a routerLink="/profile" class="mpl-media-image" 
@@ -221,7 +221,7 @@
                   </svg>
                 </a>
                 <div>
-                  <a routerLink="/profile" class="col-12">{{user.firstName}}</a>
+                  <a routerLink="/profile" class="col-12">{{showNameOrNickname()}}</a>
                   <div class="mpl-media-subtitle">{{userRole}}</div>
                 </div>
               </div>

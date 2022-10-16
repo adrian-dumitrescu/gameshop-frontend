@@ -24,6 +24,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { CheckoutComponent } from './components/checkout/checkout.component';
 
 import { UserInventoryComponent } from './components/user-inventory/user-inventory.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
 
 
 
@@ -42,7 +43,8 @@ import { UserInventoryComponent } from './components/user-inventory/user-invento
     UserProfileComponent,
     ShoppingCartComponent,
     CheckoutComponent,
-    UserInventoryComponent
+    UserInventoryComponent,
+    UserCardComponent
   ],
   imports: [
     NotificationModule,

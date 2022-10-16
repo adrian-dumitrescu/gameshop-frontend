@@ -38,15 +38,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    if (this.authService.isUserLoggedIn()) {
-      this.user = this.authService.getUserFromLocalCache();
-      this.roleToString();
-    }
+    this.getAuthUser();
+    this.roleToString();
     //alert(this.userIsAuthenticated);
     this.subscription = this.authService.getIsAuthenticated().subscribe((isAuthenticated: boolean) => {
       this.user = this.authService.getUserFromLocalCache();  
-      this.isAuthenticated = isAuthenticated;     
-        
+      this.isAuthenticated = isAuthenticated;      
     });
     // this.headerSignInForm = this.formBuilder.group({
     //   email: ['', Validators.required],
@@ -57,6 +54,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  public getAuthUser() {
+    if (this.authService.isUserLoggedIn()) {
+      this.user = this.authService.getUserFromLocalCache();
+    }
   }
 
   private roleToString(): string{
@@ -94,6 +97,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   openSearch() {
     this.openSearchBar = !this.openSearchBar;
+  }
+
+  public showFullNameOrNickname(): string{
+    if(this.user.nickname == null || ''){
+      return this.user.firstName + " " + this.user.lastName;
+    }else{
+      return this.user.nickname;
+    }
+  }
+
+  public showNameOrNickname(): string{
+    if(this.user.nickname == null || ''){
+      return this.user.firstName;
+    }else{
+      return this.user.nickname;
+    }
   }
 
 

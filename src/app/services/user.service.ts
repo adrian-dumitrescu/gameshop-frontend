@@ -29,8 +29,16 @@ export class UserService {
     return this.http.put<User>(`${this.apiServerURL}/user/update`, user);
   }
 
-  public updateUserCard(userCard: FormData): Observable<User> {
-    return this.http.post<User>(`${this.apiServerURL}/user/update/card`, userCard);
+  public updateUserCard(userCardForm: FormData): Observable<User> {
+    return this.http.put<User>(`${this.apiServerURL}/user/update/card`, userCardForm);
+  }
+
+  public updateEmail(userEmailForm: FormData): Observable<User> {
+    return this.http.put<User>(`${this.apiServerURL}/user/update/email`, userEmailForm);
+  }
+
+  public updatePassword(userPasswordForm: FormData): Observable<User> {
+    return this.http.put<User>(`${this.apiServerURL}/user/update/password`,userPasswordForm);
   }
 
   //HTTP DELETE REQUEST

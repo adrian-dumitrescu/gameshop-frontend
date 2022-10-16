@@ -19,12 +19,12 @@ export class SignUpComponent implements OnInit, OnDestroy {
   user!: User;
 
   constructor(private userService: UserService,
-    private router: Router, 
+    private router: Router,
     private route: ActivatedRoute,
     private authService: AuthenticationService,
     private notificationService: NotificationService) { }
 
-    registerForm!: FormGroup;
+  registerForm!: FormGroup;
   private subscriptions: Subscription[] = [];
 
   termsAccepted: boolean = false;
@@ -35,18 +35,22 @@ export class SignUpComponent implements OnInit, OnDestroy {
     if (this.authService.isUserLoggedIn()) {
       this.router.navigateByUrl('/main');
     }
+    this.getRegisterForm();
+ 
+  }
 
+  public getRegisterForm(){
     this.registerForm = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.nullValidator, Validators.pattern("[a-zA-Z ]*")]),
       lastName: new FormControl('', [Validators.required, Validators.nullValidator, Validators.pattern("[a-zA-Z ]*")]),
       email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
       password: new FormControl('', [Validators.required, Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[A-Za-zd!@#$%^&*()_+].{8,15}")])
       //"(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,15}"
-    })
-    // At least 8 characters in length
+         // At least 8 characters in length
     // Lowercase letters
     // Uppercase letters
     // Numbers Special characters
+    })
   }
 
   ngOnDestroy(): void {
@@ -68,6 +72,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
     }
 
   }
+  
   get getFirstName() {
     return this.registerForm.get('firstName');
   }
@@ -77,7 +82,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
   get getEmail() {
     return this.registerForm.get('email');
   }
-
   get getPassword() {
     return this.registerForm.get('password');
   }

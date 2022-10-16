@@ -24,7 +24,6 @@ export class UserProfileComponent implements OnInit,OnDestroy {
   private subscriptions: Subscription[] = [];
   public user!: User;
   public profileImage!: File;
-
   public userCardForm!: FormGroup;
   public genderMapping = GenderMapping;
   public countryMapping = CountryMapping;
@@ -37,20 +36,8 @@ export class UserProfileComponent implements OnInit,OnDestroy {
     private notificationService: NotificationService) { }
 
   ngOnInit(): void {
-    if (this.authService.isUserLoggedIn()) {
-      this.user = this.authService.getUserFromLocalCache();
-      console.log(this.user.nickname)
-    }
-
-    this.userCardForm = new FormGroup({
-      email: new FormControl(this.user.email),
-      firstName: new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z ]*")]),
-      lastName: new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z ]*")]),
-      nickname: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z0-9]*$")]),
-      gender: new FormControl('', [Validators.required]),
-      country: new FormControl('', [Validators.required]),
-      age: new FormControl('', [Validators.required, Validators.pattern("^[1-9][0-9]?$|^100$")]) // only numbers between 0 and 100
-    })
+    this.getUser();
+    this.getUserCardForm();
 
   }
 
@@ -60,9 +47,42 @@ export class UserProfileComponent implements OnInit,OnDestroy {
 
 
   public getUser(){
-
+    if (this.authService.isUserLoggedIn()) {
+      this.user = this.authService.getUserFromLocalCache();
+      console.log(this.user.nickname)
+    }
   }
   
+
+  public getUserCardForm(){
+    this.userCardForm = new FormGroup({
+      email: new FormControl(this.user.email),
+      firstName: new FormControl(this.user.firstName, [Validators.required, Validators.pattern("[a-zA-Z ]*")]),
+      lastName: new FormControl(this.user.lastName, [Validators.required, Validators.pattern("[a-zA-Z ]*")]),
+      nickname: new FormControl(this.user.nickname, [Validators.required, Validators.pattern("^[a-zA-Z0-9]*$")]),
+      gender: new FormControl(this.user.gender, [Validators.required]),
+      country: new FormControl(this.user.country, [Validators.required]),
+      age: new FormControl(this.user.age, [Validators.required, Validators.pattern("^[1-9][0-9]?$|^100$")]) // only numbers between 0 and 100
+    })
+  }
+
+  public get getFirstName() {
+    return this.userCardForm.get('firstName');
+  }
+
+  public get getLastName() {
+    return this.userCardForm.get('lastName');
+  }
+
+  public get getNickname() {
+    return this.userCardForm.get('nickname');
+  }
+
+  public get getAge() {
+    return this.userCardForm.get('age');
+  }
+
+
   public userHasSetGender(): boolean {
     if (this.user.gender == null || '') {
       return true
@@ -79,32 +99,6 @@ export class UserProfileComponent implements OnInit,OnDestroy {
     }
   }
 
-  public getUserCountrySvg(): string {
-    for (let userCountry of this.countryMapping) {
-      if (userCountry.value == this.user.country) {
-        return userCountry.svg;
-      }
-    }
-    return 'xx.svg';
-  }
-  // public getUserCountrySvg(): string{
-  //   this.countryMapping.forEach(country => {
-  //     if(country.value == this.user.country){
-  //       console.log(country.svg);
-  //       return this.user.country;
-  //     }
-
-  //   })
-  //   return 'xx.svg';
-  // }
-
-  public showNameOrNickname(): string {
-    if (this.user.nickname == null || '') {
-      return this.user.firstName;
-    } else {
-      return this.user.nickname;
-    }
-  }
 
   // public onCardSubmit() {
   //   this.userService.updateUserCard(this.userCardForm.value).subscribe({
@@ -118,7 +112,6 @@ export class UserProfileComponent implements OnInit,OnDestroy {
   // }
 
   public onCardSubmit() {
-    alert("form sent")
     const formData = new FormData;
     formData.append('email', this.userCardForm.value.email);
     formData.append('firstName', this.userCardForm.value.firstName);

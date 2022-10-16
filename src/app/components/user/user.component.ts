@@ -24,10 +24,14 @@ export class UserComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getAuthUser();
+    this.getRoleToString();
+  }
+
+  public getAuthUser() {
     if (this.authService.isUserLoggedIn()) {
       this.user = this.authService.getUserFromLocalCache();
     }
-    this.roleToString();
   }
 
   public getAllUsers(): void {
@@ -46,7 +50,7 @@ export class UserComponent implements OnInit {
   }
 
 
-  private roleToString(): string {
+  private getRoleToString(): string {
     if (this.isAdmin) {
       return this.userRole = "Admin";
     }
