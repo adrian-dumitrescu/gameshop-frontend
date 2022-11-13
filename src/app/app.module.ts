@@ -6,7 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserComponent } from './components/user/user.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ModalComponent } from './components/modal/modal.component';
@@ -25,6 +25,9 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 
 import { UserInventoryComponent } from './components/user-inventory/user-inventory.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 
@@ -44,14 +47,18 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     ShoppingCartComponent,
     CheckoutComponent,
     UserInventoryComponent,
-    UserCardComponent
+    UserCardComponent,
+    SearchFilterPipe,
+    ContactUsComponent
   ],
   imports: [
     NotificationModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    GoogleMapsModule
   ],
   providers: [
     NotificationService,

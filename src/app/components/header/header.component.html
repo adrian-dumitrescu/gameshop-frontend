@@ -5,18 +5,19 @@
     <!-- <a class="mpl-navbar-toggle"></a> -->
     <div class="mpl-navbar-brand">
       <a routerLink="/main">
-        <img src="../assets/img/GameKey_Logo.png" alt="logo" class="logo">
+        <!-- <img src="../assets/img/gamekey_logo5.png" alt="logo" class="logo" style="width: 100%; padding-left: 50px;"> -->
+        <img src="../assets/img/gamekey_logo5.png" alt="logo" class="logo" style="width: max-content;">
       </a>
     </div>
     <div class="mpl-navbar-content">
       <ul class="mpl-navbar-nav">
         <li class="mpl-dropdown active" style="opacity: 1; transform: translateY(0px);">
-          <a href="dark-index.html" class="mpl-nav-link" role="button">
-            <span class="mpl-nav-link-name"> Games </span>
+          <a routerLink="/search-bar" class="mpl-nav-link" role="button">
+            <span class="mpl-nav-link-name"> Browse </span>
           </a>
         </li>
         <li class="mpl-dropdown" style="opacity: 1; transform: translateY(0px);">
-          <a href="forums.html" class="mpl-nav-link" role="button">
+          <a routerLink="/contact-us" class="mpl-nav-link" role="button">
             <span class="mpl-nav-link-name"> Contact Us </span>
           </a>
         </li>
@@ -44,61 +45,56 @@
                 d="M1 1H5L7.68 14.39M7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6L7.68 14.39ZM10 21C10 21.5523 9.55228 22 9 22C8.44772 22 8 21.5523 8 21C8 20.4477 8.44772 20 9 20C9.55228 20 10 20.4477 10 21ZM21 21C21 21.5523 20.5523 22 20 22C19.4477 22 19 21.5523 19 21C19 20.4477 19.4477 20 20 20C20.5523 20 21 20.4477 21 21Z">
               </path>
             </svg>
+            <span class="mpl-nav-link-name">
+              <span class="badge badge-brand">{{this.myShoppingCart.cartItems.length}}</span>
+            </span>
           </a>
           <div class="mpl-dropdown-menu">
             <div class="row justify-content-between vgap">
               <div class="col-12">
+                <!-- CART ITEMS TABLE -->
                 <table class="table mpl-table-shop mpl-table-shop-sm mpl-table-responsive mb-0">
-                  <tbody>
-                    <tr class="mpl-table-product mpl-table-product-sm">
-                      <td class="mpl-table-image">
-                        <a routerLink="shop-product.html" class="mpl-table-product-image">
-                          <span class="mpl-image">
-                            <img src="..assets/cart-game-icon/poza1.jpg" alt="">
-                          </span>
-                        </a>
-                      </td>
-                      <td class="mpl-table-name" data-title="Product">
-                        <a href="shop-product.html" class="mpl-table-product-title h5">Gamepad MPL</a>
-                        <span class="mpl-price"> $120.00 </span>
-                      </td>
-                      <td class="mpl-table-remove">
-                        <a href="#" class="mpl-table-product-remove">
-                          <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18 6L6 18M6 6L18 18"></path>
-                          </svg>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr class="mpl-table-product mpl-table-product-sm">
-                      <td class="mpl-table-image">
-                        <a href="shop-product.html" class="mpl-table-product-image">
-                          <span class="mpl-image">
-                            <img src="..assets/cart-game-icon/poza.jpg" alt="">
-                          </span>
-                        </a>
-                      </td>
-                      <td class="mpl-table-name" data-title="Product">
-                        <a href="shop-product.html" class="mpl-table-product-title h5">Headphones MPL</a>
-                        <span class="mpl-price"> $84.99 </span>
-                      </td>
-                      <td class="mpl-table-remove">
-                        <a href="#" class="mpl-table-product-remove">
-                          <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18 6L6 18M6 6L18 18"></path>
-                          </svg>
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
+                  <!-- <ng-container *ngIf="isAuthenticated && this.user.shoppingCart.cartItems != undefined"> -->
+                  <ng-container *ngIf="isAuthenticated">
+                    <tbody *ngFor="let cartItem of this.myShoppingCart?.cartItems">
+                      <tr class="mpl-table-product mpl-table-product-sm">
+                        <td class="mpl-table-image">
+                          <a routerLink="shop-product.html" class="mpl-table-product-image">
+                            <span class="mpl-image">
+                              <img src="{{this.imagePath}}{{this.cartItem?.product?.productDetails?.title}}.png"
+                                style="background-color: #282535; box-shadow: 0 4px 20px rgb(31 29 41 / 40%); opacity: 1;">
+                            </span>
+                          </a>
+                        </td>
+                        <td class="mpl-table-name" data-title="Product">
+                          <a href="shop-product.html"
+                            class="mpl-table-product-title h5">{{this.cartItem?.product?.productDetails?.title}}</a>
+                          <!-- <span class="mpl-price">€{{this.getDiscountedPrice(this.cartItem.product)}}</span> -->
+                          <span class="mpl-price"
+                            *ngIf="this.isDiscountApplied(this.cartItem.product);else oldFullPrice">€ {{this.getDiscountedPrice(this.cartItem.product)}}
+                            <span>€ {{this.cartItem.product.pricePerKey}}</span></span>
+                          <ng-template #oldFullPrice>
+                            <span #this.discount>€ {{this.cartItem.product.pricePerKey}}</span>
+                          </ng-template>
+                        </td>
+                        <td class="mpl-table-remove">
+                          <a class="mpl-table-product-remove" (click)="deleteItemFromShoppingCart(this.cartItem.id)">
+                            <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M18 6L6 18M6 6L18 18"></path>
+                            </svg>
+                          </a>
+                        </td>
+                      </tr>
+                      <br>
+                    </tbody>
+                  </ng-container>
                 </table>
               </div>
               <div class="col-12">
                 <div class="d-flex justify-content-between h5 mb-0">
                   <span>Subtotal:</span>
-                  <span>$204.99</span>
+                  <span>€ {{getShoppingCartTotal()}}</span>
                 </div>
               </div>
               <div class="col-12">
@@ -161,8 +157,7 @@
 
             <div class="row hgap-sm vgap-sm">
               <div class="mpl-media-head col-12">
-                <a routerLink="/sign-in" class="mpl-media-image" data-fancybox=""
-                  data-animation-effect="fade">
+                <a routerLink="/sign-in" class="mpl-media-image" data-fancybox="" data-animation-effect="fade">
                   <span class="mpl-image">
                     <img src="../assets/img/user_icon.png" alt="">
                   </span>
@@ -202,14 +197,14 @@
         <!-- ****************************************** USER LOGGED IN ****************************************** -->
         <li *ngIf="isAuthenticated" class="mpl-dropdown" style="opacity: 1; transform: translateY(0px);">
           <a routerLink="/profile" class="mpl-nav-link" role="button">
-            <span class="mpl-nav-link-name">{{showFullNameOrNickname()}}<span class="badge badge-brand">8</span>
+            <span class="mpl-nav-link-name">{{showFullNameOrNickname()}}
+              <!-- <span class="badge badge-brand">{{this.myShoppingCart.cartItems.length}}</span> -->
             </span>
           </a>
           <div class="mpl-dropdown-menu" style="min-width: 200px;">
             <div class="row hgap-sm vgap-sm">
               <div class="mpl-media-head col-12">
-                <a routerLink="/profile" class="mpl-media-image" 
-                  data-animation-effect="fade">
+                <a routerLink="/profile" class="mpl-media-image" data-animation-effect="fade">
                   <span class="mpl-image">
                     <img [src]="user.profileImageUrl" alt="">
                   </span>
@@ -248,7 +243,7 @@
                   <div class="col-12" style="text-align: center;">
                     <a routerLink="/sign-up" class="btn btn-block btn-default" (click)="logOut()">Log Out</a>
                   </div>
-                
+
                 </li>
                 <br>
               </ul>

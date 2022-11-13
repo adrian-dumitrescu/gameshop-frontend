@@ -1,10 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { param } from 'jquery';
+import { Subscription } from 'rxjs';
 import { Role } from 'src/app/enum/role';
+import { Product } from 'src/app/model/product';
 import { User } from 'src/app/model/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { DataSharingService } from 'src/app/services/data-sharing.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,26 +15,56 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
+  private subscriptions: Subscription[] = [];
   public users!: User[];
   public user!: User;
+  public myProducts!: Product[];
   public userRole!: string;
   public profileImageModal!: boolean;
-  selectedUser: any;
+  public fileName!: string;
+  public profileImage!: File;
 
-  constructor(private userService: UserService, 
-    private authService: AuthenticationService, 
-    private activatedRoute: ActivatedRoute) { }
+
+
+  constructor(private userService: UserService,
+    private authService: AuthenticationService,
+    private activatedRoute: ActivatedRoute,
+    private dataSharingService: DataSharingService) {
+    this.subscriptions.push(
+      this.dataSharingService.products.subscribe(products => {
+        this.myProducts = products;
+      })
+    );
+  }
+  
 
   ngOnInit(): void {
     this.getAuthUser();
+    this.user = this.authService.getUserFromLocalCache();
     this.getRoleToString();
+    //this.myProducts = this.user.products;
+
+    //console.log(this.products[0]);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   public getAuthUser() {
     if (this.authService.isUserLoggedIn()) {
       this.user = this.authService.getUserFromLocalCache();
+      this.myProducts = this.user.products;
     }
+  }
+
+  public getNumberOfListedKeys(): number {
+    let totalKeys: number = 0;
+    this.myProducts.forEach(product => {
+      totalKeys = totalKeys + product.productKeys.length;
+    })
+    return totalKeys;
   }
 
   public getAllUsers(): void {
@@ -41,10 +74,16 @@ export class UserComponent implements OnInit {
     });
   }
 
-  public showNameOrNickname(): string{
-    if(this.user.nickname == null || ''){
+  public onProfileImageChange(fileName: string, profileImage: File): void {
+    this.fileName = fileName;
+    this.profileImage = profileImage;
+  }
+
+
+  public showNameOrNickname(): string {
+    if (this.user.nickname == null || '') {
       return this.user.firstName;
-    }else{
+    } else {
       return this.user.nickname;
     }
   }
@@ -79,26 +118,4 @@ export class UserComponent implements OnInit {
     this.profileImageModal = false;
   }
 
-
-
-  public clickUser(user: any) {
-    this.selectedUser = user;
-    console.log("User data is: " + JSON.stringify(this.selectedUser));
-    console.log("User's email is: " + user.email);
-
-    // V1:
-    // .subscribe((response: User[]) => {
-    //   this.users = response;
-    // },
-    // (error: HttpErrorResponse) =>{
-    //   alert(error.message);
-    // });
-
-    //V2
-    //   .subscribe({
-    //     complete: () => { ... }, // completeHandler
-    //     error: () => { ... },    // errorHandler 
-    //     next: () => { ... },     // nextHandler
-    //     someOtherProperty: 42});
-  }
 }

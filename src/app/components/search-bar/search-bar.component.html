@@ -1,3 +1,597 @@
+<div class="content-wrap">
+    <div class="mpl-navbar-mobile-overlay"></div>
+    <div>
+        <section class="mpl-banner mpl-banner-top mpl-banner-parallax mpl-banner-small">
+            <div class="mpl-image" data-speed="0.8" style="z-index: 0;">
+
+                <div id="jarallax-container-0"
+                    style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; z-index: -100; clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%);">
+                    <img src="../assets/img/bg-banner-2.jpg" alt="" class="jarallax-img"
+                        style="object-fit: cover; object-position: 50% 50%; max-width: none; position: absolute; top: 0px; left: 0px; width: 2542.81px; height: 574.913px; overflow: hidden; pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; margin-top: 161.044px; transform: translate3d(0px, -141.062px, 0px);">
+                </div>
+            </div>
+            <div class="mpl-banner-content mpl-box-lg"
+                style="opacity: 0.79792; transform: translate3d(0px, 30.3119px, 0px);">
+                <div class="container">
+                    <!-- SEARCH HERE -->
+                    <div class="fancybox-stage">
+                        <div
+                            class="fancybox-slide fancybox-slide--html fancybox-slide--current fancybox-slide--complete">
+                            <div class="mpl-fancybox-search mpl-fancybox-content fancybox-content" id="popup-search"
+                                style="display: inline-block;">
+                                <div class="container">
+                                    <form action="#" class="mpl-fancybox-search-content">
+                                        <input class="form-control mpl-fancybox-search-input" type="text" name="s"
+                                            [(ngModel)]="searchInput" placeholder="Type to Search" list="products">
+                                        <datalist id="products" style="width: auto;">
+                                            <option *ngFor="let productTitle of productDetails"
+                                                value="{{productTitle.title}}"></option>
+                                        </datalist>
+                                        <button class="mpl-fancybox-search-btn" type="button">
+                                            <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <div class="mpl-fancybox-search-line"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END OF SEARCH -->
+                </div>
+            </div>
+        </section>
+        <div class="mpl-box-md">
+            <div class="container">
+                <!-- <div class="row hgap-lg vgap-lg">
+                    <div class="col-lg mpl-content"> -->
+                <ul class="mpl-isotope-options" data-sr="option" data-sr-origin="left" data-sr-interval="100"
+                    data-sr-duration="1000" data-sr-distance="10">
+                    <a data-filter="products" [ngClass]="activeProduct" data-sr-item="option"
+                        (click)="filterByProduct()"
+                        style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: color 0.2s ease-in-out 0s, background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        Products </a>
+                    <a data-filter="users" [ngClass]="activeNickname" data-sr-item="option" (click)="filterByNickname()"
+                        style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: color 0.2s ease-in-out 0s, background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        Users </a>
+                    <a data-filter="other" class="" data-sr-item="option"
+                        style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: color 0.2s ease-in-out 0s, background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        Other </a>
+                </ul>
+
+                <!-- CONTENT HERE -->
+                <h2>Results</h2>
+
+                <!-- <table>
+                            <thead style="text-align-last: center;"></thead>
+                            <tbody style="text-align-last: center;">
+                                <tr>
+                                    <td class="cyberpress-table-item-image cyberpress-table-item-small"
+                                        style="width: auto;">
+                                        <a href="esports-single-player.html">
+                                            <img src="{{this.imagePath_76x76}}{{this.allProducts[0].productDetails.title}}_76x76.png"
+                                                alt="" class="cyberpress-team-players-thumb"
+                                                style="height: unset; width: 70px;">
+                                        </a>
+                                    </td>
+                                    <td class="cyberpress-table-item-game">
+                                        <a href="/game-route/keys">{{this.allProducts[0].productDetails.title}}</a>
+                                        <div class="cyberpress-player-team-dates">
+                                            {{this.allProducts[0].productDetails.publisher}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table> -->
+
+                <br>
+
+                <table
+                    class="table mpl-table-responsive-sm cyberpress-table cyberpress-team-players table-hover mb-0 mpl-table-product"
+                    style="width: max-content;">
+                    <thead style="text-align-last: center;">
+                        <tr>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                        class="name">ICON</span></button></th>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                        class="name">USER</span></button></th>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                        class="name">PRODUCT</span></button></th>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span class="name">PRICE
+                                        €</span></button></th>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                        class="name">DISCOUNT %</span></button></th>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span class="name">ADD
+                                        TO CART</span></button></th>
+                            <!-- <th></th> -->
+                        </tr>
+                    </thead>
+                    <!-- <input formControlName="productTitle"
+                                                [class.is-invalid]="getProductTitle?.invalid && getProductTitle?.touched"
+                                                class="form-control" type="text" id="product_title" name="product_title"
+                                                placeholder="Product Title" list="products">
+                                            <span class="form-control-bg"></span>
+                                            <datalist id="products">
+                                                <option *ngFor="let productTitle of productDetails"
+                                                    value="{{productTitle.title}}"></option>
+                                            </datalist> -->
+
+                    <!-- <tbody *ngFor="let product of allProducts | searchFilter:'{{this.searchInput}}':'{{this.activeNickname}}'"
+                                style="text-align-last: center;"> -->
+
+                    <tbody *ngFor="let product of allProducts | searchFilter:this.searchInput:this.filterOption"
+                        style="text-align-last: center;">
+
+                        <!-- <ng-container *ngIf="product.productDetails.title == searchInput && searchInput != null";> -->
+                        <ng-container *ngIf="searchInput != null" ;>
+
+                            <!-- <input [hidden]="true" formControlName="productId" type="number" value="{{this.product.id}}" id="product_id" class="form-control"> -->
+
+                            <tr>
+                                <td class="cyberpress-table-item-image cyberpress-table-item-small"
+                                    style="width: auto;">
+                                    <a href="esports-single-player.html">
+                                        <img src="{{this.product.user.profileImageUrl}}" alt=""
+                                            class="cyberpress-team-players-thumb" style="height: unset; width: 70px;">
+                                    </a>
+                                </td>
+                                <td class="cyberpress-table-item-game">
+                                    <a href="/game-route/keys">{{this.product.user.nickname}}</a>
+                                    <div class="cyberpress-player-team-dates">
+                                        <span class="h4">
+                                            <span class="mpl-product-rating">
+                                                <span class="mpl-rating">
+                                                    <span class="mpl-rating-front"
+                                                        [ngStyle]="{ width: this.ratingValue }">
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                    </span>
+                                                    <span class="mpl-rating-back" style="margin-bottom: 6px;">
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </span><span>User Feedback</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col-12 col-md-6 col-lg-4" data-sr-item="checkout"
+                                        style="width: auto; display: inline-block; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                        <a href="/game-route/keys">{{this.product.productDetails.title}}</a>
+                                        <div class="cyberpress-player-team-dates">
+                                            {{this.product.productDetails.publisher}}
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="mpl-table-price" data-title="Price">
+                                    <div class="col-12 col-md-6 col-lg-4" data-sr-item="checkout"
+                                        style="width:100px; display: inline-block; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                        <span class="mpl-price"
+                                            *ngIf="this.isDiscountApplied(product);else oldFullPrice">€{{this.getDiscountedPrice(product)}}
+                                            <span>€{{this.product.pricePerKey}}</span></span>
+                                        <ng-template #oldFullPrice>
+                                            <span #this.discount>€{{this.product.pricePerKey}}</span>
+                                        </ng-template>
+                                    </div>
+                                </td>
+
+
+                                <td>-{{this.product.discountPercent}}%</td>
+
+                                <td>
+                                    <div class="col-12">
+                                        <a role="button" class="btn btn-block btn-danger"
+                                            (click)="addItemToShoppingCart(this.product.productDetails.title, this.product.user.email)">
+                                            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg" class="icon">
+                                                <path
+                                                    d="M1 1H5L7.68 14.39M7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6L7.68 14.39ZM10 21C10 21.5523 9.55228 22 9 22C8.44772 22 8 21.5523 8 21C8 20.4477 8.44772 20 9 20C9.55228 20 10 20.4477 10 21ZM21 21C21 21.5523 20.5523 22 20 22C19.4477 22 19 21.5523 19 21C19 20.4477 19.4477 20 20 20C20.5523 20 21 20.4477 21 21Z">
+                                                </path>
+                                            </svg></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- KEYS DISPLAY ROW -->
+                        </ng-container>
+                    </tbody>
+
+                </table>
+                <!-- END CONTENT -->
+            </div>
+            <!-- <div class="col-auto-lg mpl-sidebar" data-sr="widget" data-sr-duration="1200" data-sr-distance="20">
+                        <div class="mpl-widget mpl-widget-search">
+                            <div data-sr-item="widget"
+                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                <form action="#">
+                                    <input type="text" class="form-control" name="s" placeholder="Enter a search term">
+                                    <div class="form-control-bg"></div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="mpl-widget mpl-widget-matches">
+                            <h4 class="mpl-widget-title" data-sr-item="widget"
+                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                Recent Matches</h4>
+                            <div role="tabpanel" data-sr-item="widget"
+                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                <ul class="nav nav-tabs nav-tabs-sm" role="tablist">
+                                    <li role="presentation" class="nav-item"><a href="#all_matches"
+                                            class="nav-link active" aria-controls="all_matches" role="tab"
+                                            data-bs-toggle="tab" aria-selected="true">All</a></li>
+                                    <li role="presentation" class="nav-item"><a href="#cs_matches" class="nav-link"
+                                            aria-controls="cs_matches" role="tab" data-bs-toggle="tab"
+                                            aria-selected="false">CS</a></li>
+                                    <li role="presentation" class="nav-item"><a href="#dota2_matches" class="nav-link"
+                                            aria-controls="dota2_matches" role="tab" data-bs-toggle="tab"
+                                            aria-selected="false">Dota 2</a></li>
+                                    <li role="presentation" class="nav-item"><a href="#lol_matches" class="nav-link"
+                                            aria-controls="lol_matches" role="tab" data-bs-toggle="tab"
+                                            aria-selected="false">LOL</a></li>
+                                </ul>
+                                <div class="tab-content tab-content-frame">
+                                    <div role="tabpanel" class="tab-pane fade show active" id="all_matches">
+                                        <ul class="cyberpress-matchs-archive">
+                                            <li class="cyberpress-match">
+                                                <div class="cyberpress-match-participants">
+                                                    <div class="cyberpress-match-participant">
+                                                        <div class="cyberpress-match-participant-thumbnail">
+                                                            <a href="esports-single-team.html">
+                                                                <span class="mpl-image">
+                                                                    <img src="assets/images/esports/queend_120x120.png"
+                                                                        alt="">
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <h6 class="cyberpress-match-participant-title">
+                                                            <a href="esports-single-team.html">Queend</a>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="cyberpress-match-participant-vs">
+                                                        <a href="esports-single-match.html">
+                                                            <span
+                                                                class="cyberpress-match-participant-time-start">January
+                                                                15, 2021 4:00 pm</span>
+                                                            <span class="cyberpress-match-points">VS</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="cyberpress-match-participant">
+                                                        <div class="cyberpress-match-participant-thumbnail">
+                                                            <a href="esports-single-team.html">
+                                                                <span class="mpl-image">
+                                                                    <img src="assets/images/esports/military-skull_120x120.png"
+                                                                        alt="">
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <h6 class="cyberpress-match-participant-title">
+                                                            <a href="esports-single-team.html">Military Skull</a>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="cyberpress-match">
+                                                <div class="cyberpress-match-participants">
+                                                    <div class="cyberpress-match-participant">
+                                                        <div class="cyberpress-match-participant-thumbnail">
+                                                            <a href="esports-single-team.html">
+                                                                <span class="mpl-image">
+                                                                    <img src="assets/images/esports/wolves_120x120.png"
+                                                                        alt="">
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <h6 class="cyberpress-match-participant-title">
+                                                            <a href="esports-single-team.html">Wolves</a>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="cyberpress-match-participant-vs">
+                                                        <a href="esports-single-match.html">
+                                                            <span
+                                                                class="cyberpress-match-participant-time-start">January
+                                                                8, 2021 12:00 pm</span>
+                                                            <span class="cyberpress-match-points">13:15</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="cyberpress-match-participant">
+                                                        <div class="cyberpress-match-participant-thumbnail">
+                                                            <a href="esports-single-team.html">
+                                                                <span class="mpl-image">
+                                                                    <img src="assets/images/esports/reaper_120x120.png"
+                                                                        alt="">
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <h6 class="cyberpress-match-participant-title">
+                                                            <a href="esports-single-team.html">Reaper</a>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="cyberpress-match">
+                                                <div class="cyberpress-match-participants">
+                                                    <div class="cyberpress-match-participant">
+                                                        <div class="cyberpress-match-participant-thumbnail">
+                                                            <a href="esports-single-team.html">
+                                                                <span class="mpl-image">
+                                                                    <img src="assets/images/esports/reaper_120x120.png"
+                                                                        alt="">
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <h6 class="cyberpress-match-participant-title">
+                                                            <a href="esports-single-team.html">Reaper</a>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="cyberpress-match-participant-vs">
+                                                        <a href="esports-single-match.html">
+                                                            <span
+                                                                class="cyberpress-match-participant-time-start">January
+                                                                6, 2021 3:00 pm</span>
+                                                            <span class="cyberpress-match-points">11:10</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="cyberpress-match-participant">
+                                                        <div class="cyberpress-match-participant-thumbnail">
+                                                            <a href="esports-single-team.html">
+                                                                <span class="mpl-image">
+                                                                    <img src="assets/images/esports/military-skull_120x120.png"
+                                                                        alt="">
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <h6 class="cyberpress-match-participant-title">
+                                                            <a href="esports-single-team.html">Military Skull</a>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="cs_matches">
+                                        <ul class="cyberpress-matchs-archive">
+                                            <li class="cyberpress-match">
+                                                <div class="cyberpress-match-participants">
+                                                    <div class="cyberpress-match-participant">
+                                                        <div class="cyberpress-match-participant-thumbnail">
+                                                            <a href="esports-single-team.html">
+                                                                <span class="mpl-image">
+                                                                    <img src="assets/images/esports/queend_120x120.png"
+                                                                        alt="">
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <h6 class="cyberpress-match-participant-title">
+                                                            <a href="esports-single-team.html">Queend</a>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="cyberpress-match-participant-vs">
+                                                        <a href="esports-single-match.html">
+                                                            <span
+                                                                class="cyberpress-match-participant-time-start">January
+                                                                15, 2021 4:00 pm</span>
+                                                            <span class="cyberpress-match-points">VS</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="cyberpress-match-participant">
+                                                        <div class="cyberpress-match-participant-thumbnail">
+                                                            <a href="esports-single-team.html">
+                                                                <span class="mpl-image">
+                                                                    <img src="assets/images/esports/military-skull_120x120.png"
+                                                                        alt="">
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <h6 class="cyberpress-match-participant-title">
+                                                            <a href="esports-single-team.html">Military Skull</a>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="dota2_matches">
+                                        <ul class="cyberpress-matchs-archive">
+                                            <li class="cyberpress-match">
+                                                <div class="cyberpress-match-participants">
+                                                    <div class="cyberpress-match-participant">
+                                                        <div class="cyberpress-match-participant-thumbnail">
+                                                            <a href="esports-single-team.html">
+                                                                <span class="mpl-image">
+                                                                    <img src="assets/images/esports/wolves_120x120.png"
+                                                                        alt="">
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <h6 class="cyberpress-match-participant-title">
+                                                            <a href="esports-single-team.html">Wolves</a>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="cyberpress-match-participant-vs">
+                                                        <a href="esports-single-match.html">
+                                                            <span
+                                                                class="cyberpress-match-participant-time-start">January
+                                                                8, 2021 12:00 pm</span>
+                                                            <span class="cyberpress-match-points">13:15</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="cyberpress-match-participant">
+                                                        <div class="cyberpress-match-participant-thumbnail">
+                                                            <a href="esports-single-team.html">
+                                                                <span class="mpl-image">
+                                                                    <img src="assets/images/esports/reaper_120x120.png"
+                                                                        alt="">
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <h6 class="cyberpress-match-participant-title">
+                                                            <a href="esports-single-team.html">Reaper</a>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="lol_matches">
+                                        <ul class="cyberpress-matchs-archive">
+                                            <li class="cyberpress-match">
+                                                <div class="cyberpress-match-participants">
+                                                    <div class="cyberpress-match-participant">
+                                                        <div class="cyberpress-match-participant-thumbnail">
+                                                            <a href="esports-single-team.html">
+                                                                <span class="mpl-image">
+                                                                    <img src="assets/images/esports/reaper_120x120.png"
+                                                                        alt="">
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <h6 class="cyberpress-match-participant-title">
+                                                            <a href="esports-single-team.html">Reaper</a>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="cyberpress-match-participant-vs">
+                                                        <a href="esports-single-match.html">
+                                                            <span
+                                                                class="cyberpress-match-participant-time-start">January
+                                                                6, 2021 3:00 pm</span>
+                                                            <span class="cyberpress-match-points">11:10</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="cyberpress-match-participant">
+                                                        <div class="cyberpress-match-participant-thumbnail">
+                                                            <a href="esports-single-team.html">
+                                                                <span class="mpl-image">
+                                                                    <img src="assets/images/esports/military-skull_120x120.png"
+                                                                        alt="">
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <h6 class="cyberpress-match-participant-title">
+                                                            <a href="esports-single-team.html">Military Skull</a>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mpl-widget mpl-widget-match">
+                            <h4 class="mpl-widget-title" data-sr-item="widget"
+                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                Next Match</h4>
+                            <ul class="cyberpress-matchs-archive" data-sr-item="widget"
+                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                <li class="cyberpress-match">
+                                    <div class="cyberpress-match-participants">
+                                        <div class="cyberpress-match-participant">
+                                            <div class="cyberpress-match-participant-thumbnail">
+                                                <a href="esports-single-team.html">
+                                                    <span class="mpl-image">
+                                                        <img src="assets/images/esports/wolves_120x120.png" alt="">
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <h6 class="cyberpress-match-participant-title">
+                                                <a href="esports-single-team.html">Wolves</a>
+                                            </h6>
+                                        </div>
+                                        <div class="cyberpress-match-participant-vs">
+                                            <a href="esports-single-match.html">
+                                                <span class="cyberpress-match-participant-time-start">January 8, 2021
+                                                    12:00 pm</span>
+                                                <span class="cyberpress-match-points">13:15</span>
+                                            </a>
+                                        </div>
+                                        <div class="cyberpress-match-participant">
+                                            <div class="cyberpress-match-participant-thumbnail">
+                                                <a href="esports-single-team.html">
+                                                    <span class="mpl-image">
+                                                        <img src="assets/images/esports/reaper_120x120.png" alt="">
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <h6 class="cyberpress-match-participant-title">
+                                                <a href="esports-single-team.html">Reaper</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> -->
+            <!-- </div>
+            </div> -->
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- OLD CONTENT -->
+<!-- 
 <section class="mpl-banner mpl-banner-top mpl-banner-parallax">
     <div class="mpl-image" data-speed="0.8" style="z-index: 0;">
         <div class="jarallax-container-0">
@@ -5,7 +599,6 @@
         </div>
     </div>
 
-    <!-- Main Page Banner -->
     <div class="mpl-banner-content mpl-box-lg"
         style="opacity: 0.999929; transform: translate3d(0px, -0.0105813px, 0px);">
 
@@ -32,4 +625,4 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->

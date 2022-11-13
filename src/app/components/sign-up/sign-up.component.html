@@ -27,7 +27,7 @@
                         <form action="" [formGroup]="registerForm" (ngSubmit)="onRegister()">
                             <div class="row hgap-xs vgap-sm">
                                 <!-- FIRST NAME -->
-                                <div class="col-12" data-sr-item="sign"
+                                <div class="col-12 col-md-6" data-sr-item="sign"
                                     style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
                                     <input [class.is-invalid]="getFirstName?.touched&&getFirstName?.invalid"
                                         formControlName="firstName" class="form-control" type="text" id="first_name"
@@ -39,7 +39,7 @@
                                         <small *ngIf="getFirstName?.errors?.['required']" class="text-danger"> First
                                             Name field
                                             is required</small>
-                                        <small *ngIf="getFirstName?.errors?.['pattern']" class="text-danger"> This field
+                                        <small *ngIf="getFirstName?.errors?.['pattern']" class="text-danger"> Field
                                             can
                                             only
                                             contain letters </small>
@@ -47,7 +47,7 @@
                                 </div>
 
                                 <!-- LAST NAME -->
-                                <div class="col-12" data-sr-item="sign"
+                                <div class="col-12 col-md-6" data-sr-item="sign"
                                     style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
                                     <input [class.is-invalid]="getLastName?.touched&&getLastName?.invalid"
                                         formControlName="lastName" class="form-control" type="text" id="last_name"
@@ -57,9 +57,26 @@
                                         <small *ngIf="getLastName?.errors?.['required']" class="text-danger"> Last Name
                                             field is
                                             required</small>
-                                        <small *ngIf="getLastName?.errors?.['pattern']" class="text-danger"> This field
+                                        <small *ngIf="getLastName?.errors?.['pattern']" class="text-danger"> Field
                                             can only
                                             contain letters </small>
+                                    </div>
+                                </div>
+
+                                <!-- NICKNAME -->
+                                <div class="col-12" data-sr-item="sign"
+                                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                    <input [class.is-invalid]="getNickname?.touched&&getNickname?.invalid"
+                                        formControlName="nickname" class="form-control" type="text" id="Nickname"
+                                        name="Nickname" placeholder="Nickname *"><span class="form-control-bg"></span>
+                                    <!-- Show message if field is not completed -->
+                                    <div *ngIf="(getNickname?.invalid && getNickname?.touched) || getNickname?.dirty">
+                                        <small *ngIf="getNickname?.errors?.['required']" class="text-danger"> Nickname
+                                            field is
+                                            required</small>
+                                        <small *ngIf="getNickname?.errors?.['pattern']" class="text-danger"> Field
+                                            can only
+                                            contain letters and numbers </small>
                                     </div>
                                 </div>
 

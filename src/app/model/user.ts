@@ -1,7 +1,12 @@
 import { Role } from "../model/role";
-import { ActivationKey } from "../model/activation-key";
+import { OrderDetails } from "./order-details";
+import { Product } from "./product";
+import { ProductKey } from "./product-key";
+import { ShoppingCart } from "./shopping-cart";
 
 export class User {
+  user: any;
+  [x: string]: any;
     id!: number;
     firstName!: string;
     lastName!: string;
@@ -10,13 +15,16 @@ export class User {
     joinDate!: Date;
     isNotLocked!: boolean;
     isEnabled!: boolean;
-    roles!: Role[];
-    activationKeys!: ActivationKey[];
     profileImageUrl!: string;
     nickname!: string;
     country!: string;
     gender!: string;
     age!: number;
+    roles!: Role[];
+    shoppingCart!: ShoppingCart;
+    orderDetails!: OrderDetails[];
+    products!: Product[];
+    //activationKeys!: ProductKey[];
 
 constructor(){
     this.firstName = '';
@@ -24,7 +32,7 @@ constructor(){
     this.email = '';
     this.isEnabled = false;
     this.isNotLocked = false;
-    this.roles = [];
+    //this.roles = [];
     this.email = '';
 }
 }

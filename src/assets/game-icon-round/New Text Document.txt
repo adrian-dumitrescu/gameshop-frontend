@@ -1,0 +1,3 @@
+ <img src="{{this.imagePath}}{{this.product.productDetails.title}}_76x76.png"
+
+<img src="{{this.imagePath}}{{this.product.productDetails.title}}.png"

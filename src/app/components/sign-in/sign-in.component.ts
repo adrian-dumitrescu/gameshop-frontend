@@ -152,7 +152,16 @@ export class SignInComponent implements OnInit, OnDestroy {
 
 
   public goToMainPage() {
-    this.router.navigate([`/main`]);
+    this.router.navigate([`/main`]).then(()=>{
+      this.reloadCurrentRoute();
+    });
+  }
+
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
   }
 
 }

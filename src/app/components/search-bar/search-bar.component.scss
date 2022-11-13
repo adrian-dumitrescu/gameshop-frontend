@@ -1,51 +1,81 @@
-.search-box {
+// .search-box {
 
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     background: #2f3640;
+//     width: max-content;
+//     height: 50px;
+//     border-radius: 50px;
+//     padding: 5px;
+
+// }
+
+// .search-box:hover>.search-txt {
+//     width: 240px;
+//     padding: 0 10px;
+//     top: 50px;
+// }
+
+// .search-box:hover>.search-btn {
+//     background: white;
+// }
+
+// .search-btn {
+//     color: #dc3545;
+//     float: right;
+//     width: 40px;
+//     height: 40px;
+//     border-radius: 50%;
+//     background: #2f3640;
+//     // display: flex;.
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     transition: 0.4s;
+//     text-decoration: none;
+// }
+
+// .search-txt {
+//     border: none;
+//     background: none;
+//     outline: none;
+//     float: left;
+//     padding: 0;
+//     color: white;
+//     font-size: 16px;
+//     transition: 0.4s;
+//     line-height: 40px;
+//     width: 0px;
+// }
+
+datalist {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #2f3640;
-    width: max-content;
-    height: 50px;
-    border-radius: 50px;
-    padding: 5px;
-
-}
-
-.search-box:hover>.search-txt {
-    width: 240px;
-    padding: 0 10px;
-    top: 50px;
-}
-
-.search-box:hover>.search-btn {
-    background: white;
-}
-
-.search-btn {
-    color: #dc3545;
-    float: right;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #2f3640;
-    // display: flex;.
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.4s;
-    text-decoration: none;
-}
-
-.search-txt {
-    border: none;
-    background: none;
-    outline: none;
-    float: left;
-    padding: 0;
-    color: white;
-    font-size: 16px;
-    transition: 0.4s;
-    line-height: 40px;
-    width: 0px;
-}
+    max-height: 20em;
+    border: 0 none;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  datalist option {
+    font-size: 0.8em;
+    padding: 0.3em 1em;
+    background-color: #ccc;
+    cursor: pointer;
+  }
+  
+  /* option active styles */
+  datalist option:hover,
+  datalist option:focus {
+    color: #fff;
+    background-color: #036;
+    outline: 0 none;
+  }
+  
+  #browserdata option {
+    font-size: 1.8em;
+    padding: 0.3em 1em;
+    background-color: #ccc;
+    cursor: pointer;
+  }

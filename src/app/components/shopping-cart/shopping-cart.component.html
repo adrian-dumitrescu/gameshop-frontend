@@ -18,194 +18,50 @@
                 <div class="col-lg-8">
                     <table class="table mpl-table-shop mpl-table-responsive" data-sr="product" data-sr-interval="100"
                         data-sr-duration="1000" data-sr-distance="20">
-                        <tbody>
-                            <tr class="mpl-table-product" data-sr-item="product"
-                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
-                                <td class="mpl-table-image">
-                                    <a href="shop-product.html" class="mpl-table-product-image">
-                                        <span class="mpl-image">
-                                            <img src="assets/images/dark/product-260x200.jpg" alt="">
-                                        </span>
-                                    </a>
-                                </td>
-                                <td class="mpl-table-name" data-title="Product">
-                                    <a href="shop-product.html" class="mpl-table-product-title h4">Gamepad MPL</a>
-                                    <span class="mpl-table-product-rating" data-title="Rating">
-                                        <span class="mpl-rating">
-                                            <span class="mpl-rating-front" style="width: 90%;">
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
+                        <ng-container>
+                            <tbody *ngFor="let cartItem of this.myShoppingCart?.cartItems">
+                                <tr class="mpl-table-product" data-sr-item="product"
+                                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                    <td class="mpl-table-image">
+                                        <a href="shop-product.html" class="mpl-table-product-image">
+                                            <span class="mpl-image" style="background-color: #1f1d2900;">
+                                                <img src="{{this.imagePath}}{{this.cartItem?.product?.productDetails?.title}}.png"
+                                                    style="background-color: #282535; box-shadow: 0 4px 20px rgb(31 29 41 / 40%); opacity: 1; width: 80%; height: 95%; padding-left: 10px;">>
                                             </span>
-                                            <span class="mpl-rating-back">
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
+                                        </a>
+                                    </td>
+                                    <td class="mpl-table-name" data-title="Product">
+                                        <a href="shop-product.html"
+                                            class="mpl-table-product-title h4">{{this.cartItem?.product?.productDetails?.title}}</a>
+                                        <span class="mpl-table-product-rating" data-title="Rating">
+                                            <span class="mpl-rating">
+                                                <div class="cyberpress-player-team-dates">
+                                                    {{this.cartItem?.product?.productDetails?.publisher}}</div>
+                                                <span class="mpl-rating-back">
+                                                </span>
                                             </span>
                                         </span>
-                                    </span>
-                                </td>
-                                <td class="mpl-table-price" data-title="Price">
-                                    <span class="mpl-price"> $120.00 </span>
-                                </td>
-                                <td class="mpl-table-remove">
-                                    <a href="#" class="mpl-table-product-remove">
-                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M18 6L6 18M6 6L18 18"></path>
-                                        </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="mpl-table-product" data-sr-item="product"
-                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
-                                <td class="mpl-table-image">
-                                    <a href="shop-product.html" class="mpl-table-product-image">
-                                        <span class="mpl-image">
-                                            <img src="assets/images/dark/product-2-260x200.jpg" alt="">
-                                        </span>
-                                        <span class="badge badge-brand">-30%</span>
-                                    </a>
-                                </td>
-                                <td class="mpl-table-name" data-title="Product">
-                                    <a href="shop-product.html" class="mpl-table-product-title h4">Headphones MPL</a>
-                                    <span class="mpl-table-product-rating" data-title="Rating">
-                                        <span class="mpl-rating">
-                                            <span class="mpl-rating-front" style="width: 90%;">
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                            </span>
-                                            <span class="mpl-rating-back">
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                                                    </path>
-                                                </svg>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </td>
-                                <td class="mpl-table-price" data-title="Price">
-                                    <span class="mpl-price"> $84.99 <span>$114.99</span>
-                                    </span>
-                                </td>
-                                <td class="mpl-table-remove">
-                                    <a href="#" class="mpl-table-product-remove">
-                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M18 6L6 18M6 6L18 18"></path>
-                                        </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
+                                    </td>
+                                    <td class="mpl-table-price" data-title="Price">
+                                        <span class="mpl-price"
+                                            *ngIf="this.isDiscountApplied(this.cartItem.product);else oldFullPrice">€{{this.getDiscountedPrice(this.cartItem)}}
+                                            <span>€ {{this.cartItem.product.pricePerKey}}</span></span>
+                                        <ng-template #oldFullPrice>
+                                            <span #this.discount>€ {{this.cartItem.product.pricePerKey}}</span>
+                                        </ng-template>
+                                    </td>
+                                    <td class="mpl-table-remove">
+                                        <a class="mpl-table-product-remove" (click)="deleteItemFromShoppingCart(this.cartItem.id)">
+                                            <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                                              xmlns="http://www.w3.org/2000/svg">
+                                              <path d="M18 6L6 18M6 6L18 18"></path>
+                                            </svg>
+                                          </a>
+                                    </td>
+                                </tr>
+                                <br>
+                            </tbody>
+                        </ng-container>
                     </table>
                     <div class="row vgap mt-60">
                         <div class="col-auto">
@@ -222,24 +78,24 @@
                         <tbody>
                             <tr>
                                 <th>Subtotal</th>
-                                <td data-title="Subtotal">$204.99</td>
+                                <td data-title="Subtotal">€ {{getShoppingCartTotal()}}</td>
                             </tr>
                             <tr>
-                                <th>Shipping</th>
+                                <th>Guard</th>
                                 <td data-title="Shipping">
                                     <ul class="mpl-list list-vgap-xs">
                                         <li>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" id="free_shipping"
-                                                    name="shipping" checked=""><label class="form-check-label"
-                                                    for="free_shipping">Free Shipping</label>
+                                                    name="shipping" checked="" (change)="setTotalWithoutGuardOption()"><label class="form-check-label"
+                                                    for="free_shipping" >Free (no protection): <strong>€ 0.00</strong></label>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" id="flat_shipping"
-                                                    name="shipping"><label class="form-check-label"
-                                                    for="flat_shipping">Gamekey Guard: <strong>$2.00</strong></label>
+                                                    name="shipping" (change)="setTotalWithGuardOption()"><label class="form-check-label"
+                                                    for="flat_shipping" >Gamekey Guard: <strong>€ 2.00</strong></label>
                                             </div>
                                         </li>
                                     </ul>
@@ -247,7 +103,7 @@
                             </tr>
                             <tr>
                                 <th>Total</th>
-                                <td data-title="Total">$204.99</td>
+                                <td data-title="Total">€ {{this.totalPrice}}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -1,0 +1,81 @@
+<section class="mpl-banner mpl-banner-top mpl-banner-parallax mpl-banner-small">
+    <!-- Google Map -->
+    <div id="google-map" class="mpl-gmaps" style="position: relative; overflow: hidden;">
+        <div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px;">
+            <div class="gm-style"
+                style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;">
+                <google-map height="400px" width="100%" [zoom]="zoom" [center]="center" (mapClick)="moveMap($event)"
+                    (mapMousemove)="move($event)">
+                    <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
+                        [options]="markerOptions"></map-marker>
+                </google-map>
+
+                <div>Latitude: {{display?.lat}}</div>
+                <div>Longitude: {{display?.lng}}</div>
+                <!-- <button (click)="zoomIn()">Zoom in</button>
+                <button (click)="zoomOut()">Zoom out</button> -->
+            </div>
+        </div>
+    </div>
+</section>
+<div class="mpl-box-md">
+    <div class="container">
+        <div class="row vgap-lg">
+            <div class="col-12 col-lg-8 order-lg-5">
+                <form action="php/ajax-contact-form.php" method="POST" role="form" class="mpl-form-ajax"
+                    data-toggle="validator" novalidate="true">
+                    <div class="row vgap">
+                        <div class="col-12 col-md-6">
+                            <input class="form-control" type="text" id="contact_name" name="name" placeholder="Name"
+                                required=""><span class="form-control-bg"></span>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input class="form-control" type="email" id="contact_email" name="email" placeholder="Email"
+                                required=""><span class="form-control-bg"></span>
+                        </div>
+                        <div class="col-12">
+                            <textarea class="form-control" rows="5" id="contact_message" name="message"
+                                placeholder="Message" required=""></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-md disabled">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-lg-4">
+                <h2 class="h3">Contact info</h2>
+                <ul class="list-unstyled mpl-list list-vgap-xs mb-30">
+                    <li>Strada Rotunda Nr 2,</li>
+                    <li>Bucuresti, 238654</li>
+                </ul>
+                <ul class="list-unstyled mpl-list list-vgap-xs mb-0">
+                    <li><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7294C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1468 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5342 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.18999 12.85C3.49997 10.2412 2.44824 7.271 2.11999 4.18001C2.095 3.90347 2.12787 3.62477 2.21649 3.36163C2.30512 3.09849 2.44756 2.85669 2.63476 2.65163C2.82196 2.44656 3.0498 2.28271 3.30379 2.17053C3.55777 2.05834 3.83233 2.00027 4.10999 2.00001H7.10999C7.5953 1.99523 8.06579 2.16708 8.43376 2.48354C8.80173 2.79999 9.04207 3.23945 9.10999 3.72001C9.23662 4.68007 9.47144 5.62273 9.80999 6.53001C9.94454 6.88793 9.97366 7.27692 9.8939 7.65089C9.81415 8.02485 9.62886 8.36812 9.35999 8.64001L8.08999 9.91001C9.51355 12.4136 11.5864 14.4865 14.09 15.91L15.36 14.64C15.6319 14.3711 15.9751 14.1859 16.3491 14.1061C16.7231 14.0263 17.1121 14.0555 17.47 14.19C18.3773 14.5286 19.3199 14.7634 20.28 14.89C20.7658 14.9585 21.2094 15.2032 21.5265 15.5775C21.8437 15.9518 22.0122 16.4296 22 16.92Z">
+                            </path>
+                        </svg>
+                        <span>0723 544 522</span>
+                    </li>
+                    <li><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6M22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6M22 6L12 13L2 6">
+                            </path>
+                        </svg>
+                        <span>gamekey@outlook.com</span>
+                    </li>
+                    <li><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 13C10.4295 13.5741 10.9774 14.0492 11.6066 14.3929C12.2358 14.7367 12.9315 14.9411 13.6467 14.9923C14.3618 15.0435 15.0796 14.9404 15.7514 14.6898C16.4231 14.4392 17.0331 14.0471 17.54 13.54L20.54 10.54C21.4508 9.59699 21.9548 8.33397 21.9434 7.02299C21.932 5.71201 21.4062 4.45794 20.4791 3.5309C19.5521 2.60386 18.298 2.07802 16.987 2.06663C15.676 2.05523 14.413 2.55921 13.47 3.47L11.75 5.18M14 11C13.5706 10.4259 13.0227 9.95081 12.3935 9.60706C11.7643 9.2633 11.0685 9.05888 10.3534 9.00766C9.63822 8.95645 8.92043 9.05963 8.24867 9.31021C7.57691 9.5608 6.9669 9.95293 6.46002 10.46L3.46002 13.46C2.54923 14.403 2.04525 15.666 2.05665 16.977C2.06804 18.288 2.59388 19.542 3.52092 20.4691C4.44796 21.3961 5.70203 21.922 7.01301 21.9334C8.32399 21.9448 9.58701 21.4408 10.53 20.53L12.24 18.82">
+                            </path>
+                        </svg>
+                        <span><a href="/main">gamekey</a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

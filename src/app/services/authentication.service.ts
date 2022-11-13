@@ -6,6 +6,7 @@ import { User } from '../model/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { FormGroup } from '@angular/forms';
 import { LoginForm } from '../model/login-form';
+import { ProductService } from './product.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class AuthenticationService {
   private loggedInUsername!: string | null;
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private productService: ProductService) {
     this.addGuestToLocalCache(this.guestUser);
    }
 
@@ -55,8 +56,8 @@ export class AuthenticationService {
     //return this.http.get<User>(this.apiServerURL + "/user/login/" + userEmail + "/"+ userPassword);
   }
 
-  public register(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiServerURL}/user/register`, user);
+  public register(formData: FormData): Observable<User> {
+    return this.http.post<User>(`${this.apiServerURL}/user/register`, formData);
   }
 
   public isUserLoggedIn(): boolean{
@@ -109,11 +110,14 @@ export class AuthenticationService {
     localStorage.setItem('guest', JSON.stringify(user));
   }
 
-  public getGuestFromLocalCache(): User {
+  public getGuestFromLocalCache(): User | undefined {
     // if Guest is not null, return user, else return empty json
+    var guestUser = localStorage.getItem('guest');
+    if (typeof guestUser !== 'undefined' && guestUser !== null){
+      return undefined;
+    }
     return JSON.parse(localStorage.getItem('guest') || '{}');
   }
-
 
   public addUserToLocalCache(user: User): void {
     localStorage.setItem('user', JSON.stringify(user));

@@ -41,83 +41,276 @@
                 <!-- INVENTORY -->
                 <h2>Inventory</h2>
 
-                <table
-                    class="table mpl-table-responsive-sm cyberpress-table cyberpress-team-players table-hover mb-0 mpl-table-product">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span class="name">Product</span></button></th>
-                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span class="name">Price</span></button></th>
-                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span class="name">Keys</span></button></th>
-                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span class="name">Action</span></button></th>
+                <!-- NG FOR -->
+                <form action="" [formGroup]="this.updateProductPriceFrom" (ngSubmit)="onUpdateKeyPriceSubmit()">
 
-                            <!-- <th></th> -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="cyberpress-table-item-image cyberpress-table-item-small">
-                                <a href="esports-single-player.html">
-                                    <img src={{this.image}} alt="" class="cyberpress-team-players-thumb">
-                                </a>
-                            </td>
-                            <td class="cyberpress-table-item-game">
-                                <a href="/game-route/keys">Overwatch 2</a>
-                                <div class="cyberpress-player-team-dates">Blizzard Entertainment</div>
-                            </td>
-                            <td class="mpl-table-price" data-title="Price">
-                                <span class="mpl-price" *ngIf="this.discountApplied;else noDiscountApplied"> $84.99 <span>$114.99</span></span>
-                                <ng-template #noDiscountApplied>
-                                    <span #this.discount>$114.99</span>
-                                </ng-template>
-                                
-                            </td>
-                            <td>26</td>
-                            <td>
-                                <!-- <button type="button" class="btn btn-md btn-secondary" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title=""
-                                    data-bs-original-title="Tooltip on top">EDIT</button> -->
-                                    <div class="col-12">
-                                        <button class="btn btn-md">EDIT</button>
-                                    </div>
-                            </td>
+                    <table
+                        class="table mpl-table-responsive-sm cyberpress-table cyberpress-team-players table-hover mb-0 mpl-table-product"
+                        style="width: max-content;">
+                        <thead style="text-align-last: center;">
+                            <tr>
+                                <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                            class="name">ICON</span></button></th>
+                                <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                            class="name">PRODUCT</span></button></th>
+                                <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                            class="name">PRICE €</span></button></th>
+                                <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                            class="name">DISCOUNT %</span></button></th>
+                                <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                            class="name">KEYS</span></button></th>
+                                <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                            class="name">ACTION</span></button></th>
+                                <!-- <th></th> -->
+                            </tr>
+                        </thead>
 
-                            <!-- <td></td> -->
-                        </tr>
+                        <tbody *ngFor="let product of myProducts" style="text-align-last: center;">
+                            <ng-container *ngIf="this.product.productKeys.length > 0" ;>
 
-                        <!-- <div id="{{this.one}}" class="collapse" role="tabpanel" data-bs-parent="#accordion"style="">
-                            <div class="collapse-content">
-                                Key
-                            </div>
-                        </div> -->
+                                <!-- <input [hidden]="true" formControlName="productId" type="number" value="{{this.product.id}}" id="product_id" class="form-control"> -->
 
-                        <!-- <div class="accordion mb-60" id="accordion" role="tablist" aria-multiselectable="true"> -->
+                                <tr>
+                                    <td class="cyberpress-table-item-image cyberpress-table-item-small"
+                                        style="width: auto;">
+                                        <a href="esports-single-player.html">
+                                            <img src="{{this.imagePath}}{{this.product.productDetails.title}}.png"
+                                                alt="" class="cyberpress-team-players-thumb"
+                                                style="height: unset; width: 70px;">
+                                        </a>
+                                    </td>
+                                    <td class="cyberpress-table-item-game">
+                                        <a href="/game-route/keys">{{this.product.productDetails.title}}</a>
+                                        <div class="cyberpress-player-team-dates">
+                                            {{this.product.productDetails.publisher}}
+                                        </div>
+                                    </td>
+
+                                    <td class="mpl-table-price" data-title="Price">
+                                        <div class="col-12 col-md-6 col-lg-4" data-sr-item="checkout"
+                                            style="width:100px; display: inline-block; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                            <!-- <input formControlName="lastName" type="text" placeholder="{{this.user.lastName}}"
+                                        class="form-control" style="padding:unset;"> -->
+                                            <input formControlName="productKeyPrice"
+                                                [class.is-invalid]="getKeyPrice?.invalid && getKeyPrice?.touched"
+                                                class="form-control" type="number" min="0"
+                                                placeholder="{{this.product.pricePerKey}}">
+                                            <span class="form-control-bg"></span>
+                                        </div>
+                                        <!-- <span class="mpl-price" *ngIf="this.discountApplied;else oldFullPrice">€{{this.product.pricePerKey}}
+                                    <span>€114.99</span></span>
+                                <ng-template #oldFullPrice>
+                                    <span #this.discount>€114.99</span>
+                                </ng-template> -->
+                                    </td>
+                                    <td>
+                                        <div class="col-12 col-md-6 col-lg-4" data-sr-item="checkout"
+                                            style="width:100px; display: inline-block; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                            <input formControlName="productKeyDiscount"
+                                                [class.is-invalid]="getKeyDiscount?.invalid && getKeyDiscount?.touched"
+                                                class="form-control" type="number" min="0" id="product_discount"
+                                                name="product_discount" value=""
+                                                placeholder="{{this.product.discountPercent}}"><span
+                                                class="form-control-bg"></span>
+                                        </div>
+                                    </td>
+                                    <td>{{this.product.productKeys.length}}</td>
+                                    <td>
+                                        <div class="col-12">
+                                            <a class="btn btn-block btn-primary"
+                                                (click)="showProductEdit(this.product.productDetails.title)">EDIT</a>
+                                            <br>
+                                            <button type="submit" class="btn btn-block btn-success"
+                                                (click)="setProductId(this.product.id)"
+                                                [disabled]="(updateProductPriceFrom.valid)?false:true">UPDATE</button>
+                                            <!-- btn-secondary btn-primary-->
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- KEYS DISPLAY ROW -->
+                                <ng-container
+                                    *ngIf="this.editProduct == this.product.productDetails.title && this.openProductEdit">
+                                    <!-- <thead> -->
+                                    <tr>
+                                        <!-- <th></th>
+                                <th></th>
+                                <th></th> -->
+                                        <th>
+                                            <button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                                    class="name">No.</span></button>
+                                        </th>
+                                        <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                                    class="name">Key Code</span></button></th>
+                                        <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                                    class="name">Action</span></button></th>
 
 
+                                        <!-- <th></th> -->
+                                    </tr>
+                                    <!-- </thead> -->
+                                    <tr *ngFor="let productKey of product.productKeys; let idx = index">
+                                        <!-- <td></td>
+                                <td></td>
+                                <td></td> -->
+                                        <td>
+                                            {{idx+1}}
+                                        </td>
+                                        <td class="cyberpress-table-item-game">
+                                            <a>Activation Key</a>
+                                            <div class="cyberpress-player-team-dates">{{this.productKey.activationKey}}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="col-12">
+                                                <button type="button" class="btn btn-block btn-md"
+                                                    (click)="onRemoveKey(this.productKey.activationKey, this.product.productDetails.title)">REMOVE</button>
+                                                <!-- btn-secondary btn-primary-->
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </ng-container>
+                        </tbody>
 
-                        <!-- </div> -->
-                        <!-- <tr>
-                            <td class="cyberpress-table-item-image cyberpress-table-item-small">
-                                <a href="esports-single-player.html">
-                                    <img src="assets/images/esports/player-bowman_76x76.jpg" alt="" class="cyberpress-team-players-thumb">
-                                </a>
-                            </td>
-                            <td class="cyberpress-table-item-nickname">
-                                <a href="esports-single-player.html">Bowman</a>
-                            </td>
-                            <td data-title="Name">Viggo Hanson</td>
-                            <td data-title="Role">Player</td>
-                            <td data-title="Gender">Male</td>
-                            <td data-title="Age">27</td>
-                        </tr> -->
-                    </tbody>
-                </table>
+                    </table>
+                </form>
+
+                <!-- NG FOR END -->
                 <br>
+
                 <div class="col-12">
-                    <button class="btn btn-md">Add Key</button>
+                    <button class="btn btn-md" (click)="showNewKeyForm()">Add New Key</button>
                 </div>
+
+                <!-- <form action="">
+                    <div class="col-12 col-md-6 col-lg-4" data-sr-item="product_title"
+                        style="padding-right: 10px; width:30%; display: inline-block; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        <label for="product_title">Product Title:</label><input class="form-control" type="text"
+                            id="product_title" name="product_title" placeholder="Product" list="products"><span
+                            class="form-control-bg"></span>
+                        <datalist id="products">
+                            <option *ngFor="let productTitle of productDetails" value="{{productTitle.title}}"></option>
+                        </datalist>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4" data-sr-item="checkout"
+                        style="padding-right: 10px; width:12%; display: inline-block; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        <label for="product_price">Price:</label><input class="form-control" type="text"
+                            id="product_price" name="product_price" placeholder="€"><span
+                            class="form-control-bg"></span>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4" data-sr-item="checkout"
+                        style="padding-right: 10px; width:30%; display: inline-block; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                        <label for="activation_key">Key:</label><input class="form-control" type="text"
+                            id="activation_key" name="activation_key" placeholder="Activation Code"><span
+                            class="form-control-bg"></span>
+                    </div>
+                </form> -->
+
+                <br>
+                <div *ngIf="this.keySubmitSuccess == 'failed'" class="alert alert-fail" role="alert">
+                    <strong>Failed!</strong> Key could not be added to your inventory.
+                </div>
+                <div *ngIf="this.keySubmitSuccess == 'success'" class="alert alert-success" role="alert">
+                    <strong>Success!</strong> Key has been succesfully added to your inventory.
+                </div>
+
+
+                <div [hidden]="true">
+                    <datalist id="products">
+                        <option *ngFor="let productTitle of productDetails" value="{{productTitle.title}}"></option>
+                    </datalist>
+                </div>
+
+                <div *ngIf="this.openNewKeyForm">
+                    <form action="" [formGroup]="addNewKeyForm" (ngSubmit)="onAddNewKeySubmit()">
+                        <table
+                            class="table mpl-table-responsive-sm cyberpress-table cyberpress-team-players table-hover mb-0 mpl-table-product">
+                            <thead style="text-align-last: center;">
+                                <tr>
+                                    <!-- <th></th> -->
+                                    <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                                class="name">PRODUCT</span></button></th>
+                                    <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                                class="name">PRICE €</span></button></th>
+                                    <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                                class="name">DISCOUNT %</span></button></th>
+                                    <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                                class="name">KEY CODE</span></button></th>
+                                    <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                                class="name">ACTION</span></button></th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align-last: center;">
+                                <tr>
+                                    <!-- <td class="cyberpress-table-item-image cyberpress-table-item-small"></td> -->
+                                    <td class="cyberpress-table-item-game">
+                                        <!-- <a href="/game-route/keys">Overwatch 2</a> -->
+                                        <!-- <div class="cyberpress-player-team-dates">Blizzard Entertainment</div> -->
+                                        <div class="col-12 col-md-6 col-lg-4" data-sr-item="product_title"
+                                            style="width:150px; display: inline-block; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                            <input formControlName="productTitle"
+                                                [class.is-invalid]="getProductTitle?.invalid && getProductTitle?.touched"
+                                                class="form-control" type="text" id="product_title" name="product_title"
+                                                placeholder="Product Title" list="products">
+                                            <span class="form-control-bg"></span>
+                                            <datalist id="products">
+                                                <option *ngFor="let productTitle of productDetails"
+                                                    value="{{productTitle.title}}"></option>
+                                            </datalist>
+                                        </div>
+                                    </td>
+                                    <td class="mpl-table-price" data-title="Price">
+                                        <div class="col-12 col-md-6 col-lg-4" data-sr-item="checkout"
+                                            style="width:100px; display: inline-block; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                            <input formControlName="productKeyPrice"
+                                                [class.is-invalid]="getProductKeyPrice?.invalid && getProductKeyPrice?.touched"
+                                                class="form-control" type="number" min="0" id="product_price"
+                                                name="product_price" placeholder="€"><span
+                                                class="form-control-bg"></span>
+                                        </div>
+
+                                    </td>
+                                    <td class="mpl-table-price" data-title="PriceDiscount">
+                                        <div class="col-12 col-md-6 col-lg-4" data-sr-item="checkout"
+                                            style="width:100px; display: inline-block; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                            <input formControlName="productKeyDiscount"
+                                                [class.is-invalid]="getProductKeyDiscount?.invalid && getProductKeyDiscount?.touched"
+                                                class="form-control" type="number" min="0" id="product_price_discount"
+                                                name="product_price_discount" placeholder="%"><span
+                                                class="form-control-bg"></span>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="col-12 col-md-6 col-lg-4" data-sr-item="checkout"
+                                            style="width:150px; display: inline-block; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                            <input formControlName="activationKey"
+                                                [class.is-invalid]="getActivationKey?.invalid && getActivationKey?.touched"
+                                                class="form-control" type="text" id="activation_key"
+                                                name="activation_key" placeholder="Activation Code"><span
+                                                class="form-control-bg"></span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="col-12">
+                                            <button type="submit" [disabled]="(addNewKeyForm.valid)?false:true"
+                                                class="btn btn-md">SAVE</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div *ngIf="getProductTitle?.invalid && getProductTitle?.touched || 
+                        getProductKeyPrice?.invalid && getProductKeyPrice?.touched ||
+                        getActivationKey?.invalid && getActivationKey?.touched || 
+                        getProductKeyDiscount?.invalid && getProductKeyDiscount?.touched">
+                            <small class="text-danger"> Form fields contain invalid data </small>
+                        </div>
+                    </form>
+                </div>
+                <!-- NEW UP -->
             </div>
-            <div class="col-auto mpl-sidebar" data-sr="widget" data-sr-duration="1200" data-sr-distance="20">
+            <!-- <div class="col-auto mpl-sidebar" data-sr="widget" data-sr-duration="1200" data-sr-distance="20">
                 <div class="mpl-widget mpl-widget-search">
                     <div data-sr-item="widget"
                         style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
@@ -127,9 +320,7 @@
                         </form>
                     </div>
                 </div>
-                <!-- <div class="mpl-widget mpl-widget-price">
-                    <span class="irs irs--flat js-irs-0"><span class="irs"><span class="irs-line" tabindex="0"></span><span class="irs-min" style="visibility: visible;">$0</span><span class="irs-max" style="visibility: visible;">$150</span><span class="irs-from" style="visibility: visible; left: 13.0657%;">$25</span><span class="irs-to" style="visibility: visible; left: 78.5156%;">$125</span><span class="irs-single" style="visibility: hidden; left: 35.3785%;">$25 — $125</span></span><span class="irs-grid"></span><span class="irs-bar" style="left: 16.8966%; width: 66.2069%;"></span><span class="irs-shadow shadow-from" style="display: none;"></span><span class="irs-shadow shadow-to" style="display: none;"></span><span class="irs-handle from" style="left: 16.5517%;"><i></i><i></i><i></i></span><span class="irs-handle to type_last" style="left: 82.7586%;"><i></i><i></i><i></i></span></span><input class="mpl-rangeslider irs-hidden-input" type="text" data-min="0" data-max="150" data-from="25" data-to="125" data-type="double" data-prefix="$" value="" tabindex="-1" readonly="">
-                </div> -->
+
                 <div class="mpl-widget mpl-widget-categories">
                     <h4 class="mpl-widget-title" data-sr-item="widget"
                         style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1.2s cubic-bezier(0.5, 0, 0, 1) 0s;">
@@ -158,7 +349,7 @@
                                 </span>
                                 <span class="mpl-product-content">
                                     <span class="mpl-product-title text-truncate h5">Gamepad MPL</span>
-                                    <span class="mpl-price"> $120.00 </span>
+                                    <span class="mpl-price"> €120.00 </span>
                                 </span>
                             </a>
                         </li>
@@ -171,7 +362,7 @@
                                 </span>
                                 <span class="mpl-product-content">
                                     <span class="mpl-product-title text-truncate h5">Headphones MPL</span>
-                                    <span class="mpl-price"> $84.99 <span>$114.99</span>
+                                    <span class="mpl-price"> €84.99 <span>€114.99</span>
                                     </span>
                                 </span>
                             </a>
@@ -185,7 +376,7 @@
                                 </span>
                                 <span class="mpl-product-content">
                                     <span class="mpl-product-title text-truncate h5">Headphones MPS</span>
-                                    <span class="mpl-price"> $74.99 </span>
+                                    <span class="mpl-price"> €74.99 </span>
                                 </span>
                             </a>
                         </li>
@@ -201,7 +392,7 @@
                         <div class="col-12">Failed to fetch data</div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

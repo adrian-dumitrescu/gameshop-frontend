@@ -84,7 +84,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="mpl-link mt-30">Change Password</button>
+                                <button [disabled]="(formChangePassword.valid)?false:true" type="submit" class="mpl-link mt-30">Change Password</button>
                             </div>
                         </form>
                         <form action="" [formGroup]="formChangeEmail" (ngSubmit)="onChangeEmail()">
@@ -95,7 +95,7 @@
                                     <div class="col-12 col-sm-6">
                                         <label for="setting_email">Current Email:</label>
                                         <input class="form-control" type="email" id="setting_email" name="setting_email"
-                                            value="{{user.email}}" disabled=""><span class="form-control-bg"></span>
+                                            value="{{this.user.email}}" disabled=""><span class="form-control-bg"></span>
                                     </div>
                                     <div class="col-12 col-sm-6">
                                         <label for="setting_new_email">New Email:</label>
@@ -112,7 +112,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="mpl-link mt-30">Change Email</button>
+                                <button [disabled]="(formChangeEmail.valid)?false:true" type="submit" class="mpl-link mt-30">Change Email</button>
                             </div>
                         </form>
 

@@ -36,20 +36,21 @@ export class SignUpComponent implements OnInit, OnDestroy {
       this.router.navigateByUrl('/main');
     }
     this.getRegisterForm();
- 
+
   }
 
-  public getRegisterForm(){
+  public getRegisterForm() {
     this.registerForm = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.nullValidator, Validators.pattern("[a-zA-Z ]*")]),
       lastName: new FormControl('', [Validators.required, Validators.nullValidator, Validators.pattern("[a-zA-Z ]*")]),
+      nickname: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z0-9]*$")]),
       email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
       password: new FormControl('', [Validators.required, Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[A-Za-zd!@#$%^&*()_+].{8,15}")])
       //"(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,15}"
-         // At least 8 characters in length
-    // Lowercase letters
-    // Uppercase letters
-    // Numbers Special characters
+      // At least 8 characters in length
+      // Lowercase letters
+      // Uppercase letters
+      // Numbers Special characters
     })
   }
 
@@ -72,7 +73,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
     }
 
   }
-  
+
   get getFirstName() {
     return this.registerForm.get('firstName');
   }
@@ -84,6 +85,9 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
   get getPassword() {
     return this.registerForm.get('password');
+  }
+  get getNickname() {
+    return this.registerForm.get('nickname');
   }
 
   toggleUserCreatedSucessfullyModal() {
@@ -117,8 +121,15 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
   // }
   public onRegister(): void {
+    const formData = new FormData;
+    formData.append('firstName', this.registerForm.value.firstName);
+    formData.append('lastName', this.registerForm.value.lastName);
+    formData.append('nickname', this.registerForm.value.nickname);
+    formData.append('email', this.registerForm.value.email);
+    formData.append('password', this.registerForm.value.password);
+
     this.subscriptions.push(
-      this.authService.register(this.registerForm.value).subscribe({
+      this.authService.register(formData).subscribe({
         next: (response: User) => {
           this.sendNotification(NotificationType.SUCCESS, `A new account was created for ${response.firstName}.
           Please check your email for password to log in.`);

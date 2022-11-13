@@ -50,7 +50,7 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
 
   public getChangeEmailForm() {
     this.formChangeEmail = new FormGroup({
-      currentEmail: new FormControl(this.user.email, [Validators.required]),
+      currentEmail: new FormControl(this.user.email, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
       newEmail: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])
     })
   }
