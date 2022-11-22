@@ -6,27 +6,26 @@ import { ShoppingCart } from "./shopping-cart";
 
 export class User {
   user: any;
-  [x: string]: any;
-    id!: number;
-    firstName!: string;
-    lastName!: string;
-    email!: string;
-    password!: string;
-    joinDate!: Date;
-    isNotLocked!: boolean;
-    isEnabled!: boolean;
-    profileImageUrl!: string;
-    nickname!: string;
-    country!: string;
-    gender!: string;
-    age!: number;
-    roles!: Role[];
-    shoppingCart!: ShoppingCart;
-    orderDetails!: OrderDetails[];
-    products!: Product[];
-    //activationKeys!: ProductKey[];
+  id!: number;
+  firstName!: string;
+  lastName!: string;
+  email!: string;
+  password!: string;
+  joinDate!: Date;
+  isNotLocked!: boolean;
+  isEnabled!: boolean;
+  profileImageUrl!: string;
+  nickname!: string;
+  country!: string;
+  gender!: string;
+  age!: number;
+  roles!: Role[];
+  shoppingCart!: ShoppingCart;
+  orderDetails!: OrderDetails[];
+  products!: Product[];
+  //activationKeys!: ProductKey[];
 
-constructor(){
+  constructor() {
     this.firstName = '';
     this.lastName = '';
     this.email = '';
@@ -34,7 +33,7 @@ constructor(){
     this.isNotLocked = false;
     //this.roles = [];
     this.email = '';
-}
+  }
 }
 
 // {

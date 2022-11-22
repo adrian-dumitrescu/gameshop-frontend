@@ -6,6 +6,6 @@ export class OrderItem{
     quantity!: number;
     createdAt!: Date;
     modifiedAt!: Date;
-    order_details!: OrderDetails;
+    orderDetails!: OrderDetails;
     product!: Product;
 }

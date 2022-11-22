@@ -21,6 +21,11 @@
                         <a routerLink="/inventory"> Inventory </a>
                     </li>
                 </div>
+                <div class="swiper-slide" role="group" aria-label="5 / 6">
+                    <li>
+                        <a routerLink="/orders"> Orders </a>
+                    </li>
+                </div>
                 <!-- <div class="swiper-slide" role="group" aria-label="3 / 6">
                     <li>
                         <a href="user-messages.html"> Messages<span class="badge badge-brand">8</span>
@@ -66,21 +71,21 @@
                         </thead>
 
                         <tbody *ngFor="let product of myProducts" style="text-align-last: center;">
-                            <ng-container *ngIf="this.product.productKeys.length > 0" ;>
+                            <ng-container *ngIf="getNumberOfListedKeys(product) > 0" ;>
 
                                 <!-- <input [hidden]="true" formControlName="productId" type="number" value="{{this.product.id}}" id="product_id" class="form-control"> -->
 
                                 <tr>
                                     <td class="cyberpress-table-item-image cyberpress-table-item-small"
                                         style="width: auto;">
-                                        <a href="esports-single-player.html">
+                                        <a href="esports-single-player.html" routerLink="/product-view/{{this.product.productDetails.id}}">
                                             <img src="{{this.imagePath}}{{this.product.productDetails.title}}.png"
                                                 alt="" class="cyberpress-team-players-thumb"
                                                 style="height: unset; width: 70px;">
                                         </a>
                                     </td>
                                     <td class="cyberpress-table-item-game">
-                                        <a href="/game-route/keys">{{this.product.productDetails.title}}</a>
+                                        <a routerLink="/product-view/{{this.product.productDetails.id}}">{{this.product.productDetails.title}}</a>
                                         <div class="cyberpress-player-team-dates">
                                             {{this.product.productDetails.publisher}}
                                         </div>

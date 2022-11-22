@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CartItem } from 'src/app/model/cart-item';
@@ -22,6 +22,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   public imagePath: string = "../assets/game-icon-round/";
   public totalPrice: number = 0;
   public withGuard: boolean = false;
+  public userRating: number = 100;
+  public ratingValue: string = this.userRating + "%";
 
   constructor(private authService: AuthenticationService,
     private shoppingCartService: ShoppingCartService,
@@ -71,8 +73,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
           }else{
             this.totalPrice = newShoppingCart.total;
           }
-          
-
         },
         error: (errorResponse: HttpErrorResponse) => {
           console.log(errorResponse.error.message);
@@ -81,7 +81,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     );
   }
 
-  public getShoppingCartTotal(): number {
+  public getShoppingCartSubtotal(): number {
     if (this.myShoppingCart?.total != null) {
       return this.myShoppingCart.total;
     }
@@ -93,6 +93,10 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     return discountedPrice * cartItem.quantity;
   }
 
+  public getFullPrice(cartItem: CartItem): number {
+    return cartItem.product.pricePerKey * cartItem.quantity;
+  }
+
   public isDiscountApplied(product: Product): boolean {
     if (product.discountPercent != 0) {
       return true;
@@ -102,15 +106,71 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   public setTotalWithoutGuardOption() {
-    this.totalPrice = this.myShoppingCart.total;
+    this.totalPrice = this.myShoppingCart?.total;
     this.withGuard = false;
     //return this.totalPrice;
   }
 
   public setTotalWithGuardOption() {
-    this.totalPrice = this.myShoppingCart.total + 2;
+    this.totalPrice = this.myShoppingCart?.total + 2;
     this.withGuard = true;
     //return this.totalPrice;
+  }
+
+  public onPlusClick(cartItemId: number){
+    let params = new HttpParams().set('cartItemId', cartItemId);
+
+    this.subscriptions.push(
+      this.shoppingCartService.incrementItemQuantity(params).subscribe({
+        next: (newShoppingCart: ShoppingCart) => {
+          // console.log(newShoppingCart.id);
+          // let newCartItems = this.shoppingCart.cartItems.filter(cartItem => cartItem.id !== cartItemId);
+          // this.shoppingCart.cartItems = newCartItems;
+          this.myShoppingCart = newShoppingCart;
+          this.dataSharingService.shoppingCart.next(this.myShoppingCart);
+
+          this.user.shoppingCart = newShoppingCart;
+          this.authService.addUserToLocalCache(this.user);
+
+          if(this.withGuard){
+            this.totalPrice = newShoppingCart.total + 2;
+          }else{
+            this.totalPrice = newShoppingCart.total;
+          }
+        },
+        error: (errorResponse: HttpErrorResponse) => {
+          console.log(errorResponse.error.message);
+        }
+      })
+    );
+  }
+
+  public onMinusClick(cartItemId: number){
+    let params = new HttpParams().set('cartItemId', cartItemId);
+    
+    this.subscriptions.push(
+      this.shoppingCartService.decrementItemQuantity(params).subscribe({
+        next: (newShoppingCart: ShoppingCart) => {
+          console.log(newShoppingCart.id);
+          // let newCartItems = this.shoppingCart.cartItems.filter(cartItem => cartItem.id !== cartItemId);
+          // this.shoppingCart.cartItems = newCartItems;
+          this.myShoppingCart = newShoppingCart;
+          this.dataSharingService.shoppingCart.next(this.myShoppingCart);
+
+          this.user.shoppingCart = newShoppingCart;
+          this.authService.addUserToLocalCache(this.user);
+
+          if(this.withGuard){
+            this.totalPrice = newShoppingCart.total + 2;
+          }else{
+            this.totalPrice = newShoppingCart.total;
+          }
+        },
+        error: (errorResponse: HttpErrorResponse) => {
+          console.log(errorResponse.error.message);
+        }
+      })
+    );
   }
 
 }

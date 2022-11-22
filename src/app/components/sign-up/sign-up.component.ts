@@ -90,13 +90,13 @@ export class SignUpComponent implements OnInit, OnDestroy {
     return this.registerForm.get('nickname');
   }
 
-  toggleUserCreatedSucessfullyModal() {
+  public toggleUserCreatedSucessfullyModal() {
     if (this.userCreatedSuccesfully) {
       //this.router.navigate(['/sign-in']);
     }
   }
 
-  getUserCreationStatus() {
+  public getUserCreationStatus() {
     return this.userCreatedSuccesfully;
   }
 

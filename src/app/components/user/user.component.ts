@@ -62,7 +62,7 @@ export class UserComponent implements OnInit, OnDestroy {
   public getNumberOfListedKeys(): number {
     let totalKeys: number = 0;
     this.myProducts.forEach(product => {
-      totalKeys = totalKeys + product.productKeys.length;
+      totalKeys = totalKeys + product?.productKeys?.length;
     })
     return totalKeys;
   }

@@ -6,18 +6,27 @@ import { Product } from '../model/product';
 })
 export class SearchFilterPipe implements PipeTransform {
 
-  transform(products: Product[], searchInput: string, filterOption: string): Product[] {
-    //console.log(filterOption);
+  transform(products: Product[], searchInput: string, filterOption: string): Product[] | null{
     if (!products || !searchInput) {
-      return products;
-    } else if (filterOption === "product") {
-      return products.filter(product => product.productDetails.title.toLocaleLowerCase().includes(searchInput.toLocaleLowerCase()))
-    } else {
-      return products.filter(product => product.user.nickname.toLocaleLowerCase().includes(searchInput.toLocaleLowerCase()));
+      return null;
+    }  else if (filterOption === "product") {
+      let productsArray = products.filter(product => product?.productDetails.title.toLocaleLowerCase().includes(searchInput.toLocaleLowerCase()));
+      return productsArray.sort((a,b) => (this.getDiscountedPrice(a) < this.getDiscountedPrice(b))? -1 : 1);
+    } else if (filterOption === "nickname"){
+      let productsArray = products.filter(product => product?.user?.nickname.toLocaleLowerCase().includes(searchInput.toLocaleLowerCase()));
+      return productsArray.sort((a,b) => (this.getDiscountedPrice(a) < this.getDiscountedPrice(b))? -1 : 1);
+    }else{
+      //const productEmpty = new Product[] = [];
+      return null;
     }
     // return products.filter(product =>
     //   product.productDetails.title.toLocaleLowerCase().includes(searchInput.toLocaleLowerCase()) ||
     //   product.user.nickname.toLocaleLowerCase().includes(searchInput.toLocaleLowerCase()));
+  }
+
+  public getDiscountedPrice(product: Product): number {
+    let discountedPrice = product?.pricePerKey - (product?.pricePerKey * product?.discountPercent / 100);
+    return discountedPrice;
   }
 
 }

@@ -113,7 +113,7 @@ export class UserProfileComponent implements OnInit,OnDestroy {
 
   public onCardSubmit() {
     const formData = new FormData;
-    formData.append('email', this.userCardForm.value.email);
+    formData.append('email', this.user.email);
     formData.append('firstName', this.userCardForm.value.firstName);
     formData.append('lastName', this.userCardForm.value.lastName);
     formData.append('nickname', this.userCardForm.value.nickname);
@@ -124,7 +124,14 @@ export class UserProfileComponent implements OnInit,OnDestroy {
     this.subscriptions.push(
       this.userService.updateUserCard(formData).subscribe({
         next: (newUser: User) => {
-          this.authService.addUserToLocalCache(newUser);
+          this.user.firstName = newUser.firstName;
+          this.user.lastName = newUser.lastName;
+          this.user.nickname = newUser.nickname;
+          this.user.gender = newUser.gender;
+          this.user.country = newUser.country;
+          this.user.age = newUser.age;
+
+          this.authService.addUserToLocalCache(this.user);
           window.location.reload()
         },
         error: (errorResponse: HttpErrorResponse) => {

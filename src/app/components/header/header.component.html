@@ -46,10 +46,13 @@
               </path>
             </svg>
             <span class="mpl-nav-link-name">
-              <span class="badge badge-brand">{{this.myShoppingCart.cartItems.length}}</span>
+              <span class="badge badge-brand">{{getShoppingCartNumberOfItems()}}</span>
             </span>
           </a>
-          <div class="mpl-dropdown-menu">
+          <!-- <div class="mpl-dropdown-menu" style="min-width: 400px;"> -->
+          <!-- <div class="mpl-dropdown-menu" style="width: fit-content; display: inline-flex;"> -->
+          <div class="mpl-dropdown-menu"
+            style="display: inline-flex;min-width: 400px; max-width: 450px; width: fit-content;">
             <div class="row justify-content-between vgap">
               <div class="col-12">
                 <!-- CART ITEMS TABLE -->
@@ -59,7 +62,7 @@
                     <tbody *ngFor="let cartItem of this.myShoppingCart?.cartItems">
                       <tr class="mpl-table-product mpl-table-product-sm">
                         <td class="mpl-table-image">
-                          <a routerLink="shop-product.html" class="mpl-table-product-image">
+                          <a routerLink="/product-view/{{this.cartItem?.product?.productDetails?.id}}" class="mpl-table-product-image">
                             <span class="mpl-image">
                               <img src="{{this.imagePath}}{{this.cartItem?.product?.productDetails?.title}}.png"
                                 style="background-color: #282535; box-shadow: 0 4px 20px rgb(31 29 41 / 40%); opacity: 1;">
@@ -67,18 +70,39 @@
                           </a>
                         </td>
                         <td class="mpl-table-name" data-title="Product">
-                          <a href="shop-product.html"
+                          <a routerLink="/product-view/{{this.cartItem?.product?.productDetails?.id}}"
                             class="mpl-table-product-title h5">{{this.cartItem?.product?.productDetails?.title}}</a>
                           <!-- <span class="mpl-price">€{{this.getDiscountedPrice(this.cartItem.product)}}</span> -->
                           <span class="mpl-price"
-                            *ngIf="this.isDiscountApplied(this.cartItem.product);else oldFullPrice">€ {{this.getDiscountedPrice(this.cartItem.product)}}
-                            <span>€ {{this.cartItem.product.pricePerKey}}</span></span>
+                            *ngIf="this.isDiscountApplied(this.cartItem.product);else oldFullPrice">€
+                            {{this.getDiscountedPrice(this.cartItem)}}
+                            <span>€ {{this.getFullPrice(this.cartItem)}}</span></span>
                           <ng-template #oldFullPrice>
-                            <span #this.discount>€ {{this.cartItem.product.pricePerKey}}</span>
+                            <span>€ {{this.getFullPrice(this.cartItem)}}</span>
                           </ng-template>
                         </td>
+                        <!-- QUANTITY -->
+                        <td class="mpl-table-shop-total" data-title="Quantity"
+                          style="flex-grow: unset;flex-basis: unset;" style="width: 100px;">
+                          <!-- <div class="col-12 col-md-6 col-lg-4" style="display:-webkit-inline-box;"> -->
+
+                          <button class="minus-btn" type="button" name="button"
+                            (click)="onMinusClick(this.cartItem.id)">
+                            <img src="../assets/svg-icons/minus.svg" alt="" />
+                          </button>
+                          <!-- <input class="form-control" type="text" name="name"
+                              value="{{this.cartItem.quantity}}"
+                              style="padding: unset; padding-left: 10px; width: 50%;"> -->
+                          <input class="form-control" type="text" name="name" value="{{this.cartItem.quantity}}"
+                            style="padding: unset; padding-left: 10px; width: 35%;" readonly>
+                          <button class="plus-btn" type="button" name="button" (click)="onPlusClick(this.cartItem.id)">
+                            <img src="../assets/svg-icons/plus.svg" alt="" />
+                          </button>
+                          <!-- </div> -->
+                        </td>
                         <td class="mpl-table-remove">
-                          <a class="mpl-table-product-remove" (click)="deleteItemFromShoppingCart(this.cartItem.id)">
+                          <a class="mpl-table-product-remove" (click)="deleteItemFromShoppingCart(this.cartItem.id)"
+                            style="display: unset;">
                             <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
                               xmlns="http://www.w3.org/2000/svg">
                               <path d="M18 6L6 18M6 6L18 18"></path>
@@ -197,7 +221,7 @@
         <!-- ****************************************** USER LOGGED IN ****************************************** -->
         <li *ngIf="isAuthenticated" class="mpl-dropdown" style="opacity: 1; transform: translateY(0px);">
           <a routerLink="/profile" class="mpl-nav-link" role="button">
-            <span class="mpl-nav-link-name">{{showFullNameOrNickname()}}
+            <span class="mpl-nav-link-name">{{this.showFullNameOrNickname()}}
               <!-- <span class="badge badge-brand">{{this.myShoppingCart.cartItems.length}}</span> -->
             </span>
           </a>
@@ -216,26 +240,32 @@
                   </svg>
                 </a>
                 <div>
-                  <a routerLink="/profile" class="col-12">{{showNameOrNickname()}}</a>
+                  <a routerLink="/profile" class="col-12">{{this.showNameOrNickname()}}</a>
                   <div class="mpl-media-subtitle">{{userRole}}</div>
                 </div>
               </div>
               <ul class="mpl-navbar-nav" style="align-self: center; padding-right: 0;">
-                <li>
+                <!-- <li>
                   <div class="col-12">
                     <a routerLink="/profile" class="btn btn-block btn-brand">Profile</a>
                   </div>
                 </li>
-                <br>
+                <br> -->
                 <li>
                   <div class="col-12">
                     <a routerLink="/settings" class="btn btn-block btn-brand">Settings</a>
                   </div>
                 </li>
                 <br>
-                <li>
+                <!-- <li>
                   <div class="col-12">
                     <a routerLink="/inventory" class="btn btn-block btn-brand">Inventory</a>
+                  </div>
+                </li>
+                <br> -->
+                <li>
+                  <div class="col-12">
+                    <a routerLink="/orders" class="btn btn-block btn-brand">VIEW ORDERS</a>
                   </div>
                 </li>
                 <br>
@@ -243,12 +273,9 @@
                   <div class="col-12" style="text-align: center;">
                     <a routerLink="/sign-up" class="btn btn-block btn-default" (click)="logOut()">Log Out</a>
                   </div>
-
                 </li>
                 <br>
               </ul>
-
-
             </div>
           </div>
         </li>

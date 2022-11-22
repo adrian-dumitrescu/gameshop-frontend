@@ -1,0 +1,394 @@
+<div class="content-wrap">
+    <div class="mpl-navbar-mobile-overlay"></div>
+    <div class="no-banner">
+        <div class="mpl-box-md">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-30">
+                        <li class="breadcrumb-item"><a routerLink="/main">Home</a></li>
+                        <li class="breadcrumb-item"><a routerLink="/search-bar">Shop</a></li>
+                        <li class="breadcrumb-item active">{{this.getProductDetailsTitle()}}</li>
+                    </ol>
+                </nav>
+                <div class="row hgap-lg vgap-lg mb-0">
+                    <div class="col-lg-7">
+                        <div class="mpl-product-gallery">
+                            <a class="mpl-gallery-item" data-fancybox="gallery" data-animation-effect="fade">
+                                <span class="mpl-image">
+                                    <img src="{{this.imagePath}}{{this.getProductDetailsTitle()}}.jpg" alt="">
+                                    <!-- <img src="..assets/images/dark/product-2-1280x820.jpg" alt=""> -->
+                                </span>
+                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M8 3H5C4.46957 3 3.96086 3.21071 3.58579 3.58579C3.21071 3.96086 3 4.46957 3 5V8M21 8V5C21 4.46957 20.7893 3.96086 20.4142 3.58579C20.0391 3.21071 19.5304 3 19 3H16M16 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V16M3 16V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H8">
+                                    </path>
+                                </svg>
+                            </a>
+                            <!-- <div class="mpl-carousel" data-gap="10" data-scrollbar="true" data-slides="1"
+                                data-breakpoints="767:4,440:3,320:2">
+                                <div
+                                    class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
+                                    <div class="swiper-wrapper" id="swiper-wrapper-f1c655f3711e82f5" aria-live="polite"
+                                        style="transform: translate3d(0px, 0px, 0px);">
+                                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 5"
+                                            style="width: 175.25px; margin-right: 10px;"><a class="mpl-gallery-item"
+                                                href="assets/images/dark/product-2-1920x1080-2.jpg"
+                                                data-fancybox="gallery" data-animation-effect="fade">
+                                                <span class="mpl-image">
+                                                    <img src="assets/images/dark/product-2-412x264-2.jpg" alt="">
+                                                </span>
+                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M8 3H5C4.46957 3 3.96086 3.21071 3.58579 3.58579C3.21071 3.96086 3 4.46957 3 5V8M21 8V5C21 4.46957 20.7893 3.96086 20.4142 3.58579C20.0391 3.21071 19.5304 3 19 3H16M16 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V16M3 16V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H8">
+                                                    </path>
+                                                </svg>
+                                            </a></div>
+                                        <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 5"
+                                            style="width: 175.25px; margin-right: 10px;"><a class="mpl-gallery-item"
+                                                href="assets/images/dark/product-2-1920x1080-3.jpg"
+                                                data-fancybox="gallery" data-animation-effect="fade">
+                                                <span class="mpl-image">
+                                                    <img src="assets/images/dark/product-2-412x264-3.jpg" alt="">
+                                                </span>
+                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M8 3H5C4.46957 3 3.96086 3.21071 3.58579 3.58579C3.21071 3.96086 3 4.46957 3 5V8M21 8V5C21 4.46957 20.7893 3.96086 20.4142 3.58579C20.0391 3.21071 19.5304 3 19 3H16M16 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V16M3 16V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H8">
+                                                    </path>
+                                                </svg>
+                                            </a></div>
+                                        <div class="swiper-slide" role="group" aria-label="3 / 5"
+                                            style="width: 175.25px; margin-right: 10px;"><a class="mpl-gallery-item"
+                                                href="assets/images/dark/product-2-1920x1080-4.jpg"
+                                                data-fancybox="gallery" data-animation-effect="fade">
+                                                <span class="mpl-image">
+                                                    <img src="assets/images/dark/product-2-412x264-4.jpg" alt="">
+                                                </span>
+                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M8 3H5C4.46957 3 3.96086 3.21071 3.58579 3.58579C3.21071 3.96086 3 4.46957 3 5V8M21 8V5C21 4.46957 20.7893 3.96086 20.4142 3.58579C20.0391 3.21071 19.5304 3 19 3H16M16 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V16M3 16V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H8">
+                                                    </path>
+                                                </svg>
+                                            </a></div>
+                                        <div class="swiper-slide" role="group" aria-label="4 / 5"
+                                            style="width: 175.25px; margin-right: 10px;"><a class="mpl-gallery-item"
+                                                href="assets/images/dark/product-2-1920x1080-5.jpg"
+                                                data-fancybox="gallery" data-animation-effect="fade">
+                                                <span class="mpl-image">
+                                                    <img src="assets/images/dark/product-2-412x264-5.jpg" alt="">
+                                                </span>
+                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M8 3H5C4.46957 3 3.96086 3.21071 3.58579 3.58579C3.21071 3.96086 3 4.46957 3 5V8M21 8V5C21 4.46957 20.7893 3.96086 20.4142 3.58579C20.0391 3.21071 19.5304 3 19 3H16M16 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V16M3 16V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H8">
+                                                    </path>
+                                                </svg>
+                                            </a></div>
+                                        <div class="swiper-slide" role="group" aria-label="5 / 5"
+                                            style="width: 175.25px; margin-right: 10px;"><a class="mpl-gallery-item"
+                                                href="assets/images/dark/product-2-1920x1080-6.jpg"
+                                                data-fancybox="gallery" data-animation-effect="fade">
+                                                <span class="mpl-image">
+                                                    <img src="assets/images/dark/product-2-412x264-6.jpg" alt="">
+                                                </span>
+                                                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M8 3H5C4.46957 3 3.96086 3.21071 3.58579 3.58579C3.21071 3.96086 3 4.46957 3 5V8M21 8V5C21 4.46957 20.7893 3.96086 20.4142 3.58579C20.0391 3.21071 19.5304 3 19 3H16M16 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V16M3 16V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H8">
+                                                    </path>
+                                                </svg>
+                                            </a></div>
+                                    </div>
+                                    <div class="swiper-scrollbar"></div><span class="swiper-notification"
+                                        aria-live="assertive" aria-atomic="true"></span>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-5" data-sr="product-main" data-sr-interval="120" data-sr-duration="1000"
+                        data-sr-distance="20">
+                        <h1 class="mb-10" data-sr-item="product-main"
+                            style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                            {{this.getProductDetailsTitle()}}</h1>
+                        <div class="row align-items-center hgap-sm vgap-sm" data-sr-item="product-main"
+                            style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                            <h3 class="mt-30" data-sr-item="product-main"
+                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                <h3>Starting from: </h3>€ {{this.getDiscountedPrice(this.getFirstProductFromList())}}</h3>
+                            <p data-sr-item="product-main"
+                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                {{this.productDetails.summary}} </p>
+                            <!-- <div class="row hgap-sm vgap-sm align-items-center mt-30">
+                                <div class="col-2" data-sr-item="product-main"
+                                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                    Color </div>
+                                <div class="col-7" data-sr-item="product-main"
+                                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                    <select class="form-select form-select-sm">
+                                        <option selected="">Choose an option</option>
+                                        <option>White</option>
+                                        <option>Black</option>
+                                        <option>Blue</option>
+                                    </select>
+                                    <span class="form-control-bg"></span>
+                                </div>
+                            </div> -->
+                            <div class="row hgap-sm vgap-sm align-items-center mt-40">
+                                <!-- <div class="col-auto" data-sr-item="product-main"
+                                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                    <div class="input-group  bootstrap-touchspin bootstrap-touchspin-injected"><input
+                                            class="mpl-touchspin form-control" type="text" value="1" min="1" max="99">
+                                        <div class="form-control-bg"></div><span
+                                            class="input-group-btn-vertical"><button class="btn bootstrap-touchspin-up "
+                                                type="button">+</button><button class="btn bootstrap-touchspin-down "
+                                                type="button">-</button></span>
+                                    </div>
+                                </div> -->
+                                <div class="col-auto" data-sr-item="product-main"
+                                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                    <a class="btn btn-md btn-brand" (click)="this.addItemToShoppingCart(this.cheapestProduct.productDetails.title, this.cheapestProduct.user.email)">Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="nav-item"><a href="#description" class="nav-link active"
+                                    aria-controls="description" role="tab" data-bs-toggle="tab"
+                                    aria-selected="false">Description</a></li>
+                            <li role="presentation" class="nav-item"><a href="#additionalInformation" class="nav-link"
+                                    aria-controls="additionalInformation" role="tab" data-bs-toggle="tab"
+                                    aria-selected="true">Additional Information</a></li>
+                            <!-- <li role="presentation" class="nav-item"><a href="#reviews" class="nav-link"
+                                    aria-controls="reviews" role="tab" data-bs-toggle="tab"
+                                    aria-selected="false">Reviews (3)</a></li> -->
+
+                        </ul>
+                        <div class="tab-content pb-0">
+                            <div role="tabpanel" class="tab-pane fade show active" id="description">
+                                <article class="mpl-shop"
+                                    style="visibility: visible; opacity: 1; transition: opacity 1.4s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                    <p> {{this.productDetails.summary}} </p>
+                                    <!-- <p class="mb-0"> Quod satis pecuniae sempiternum. Ut sciat oportet motum. Nunquam
+                                        invenies eum. Hic de tabula. Ego vivere, ut debui, et nunc fiant. Istuc quod
+                                        opus non est. Lorem ipsum occurrebat pragmaticam semper ut, si quis ita velim
+                                        tibi bene recognoscere. Quorum duo te mihi videtur. </p> -->
+                                </article>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="additionalInformation">
+                                <table class="table mpl-table-product-information mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <th>Product</th>
+                                            <td>{{this.productDetails.title}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Publisher</th>
+                                            <td>{{this.productDetails.publisher}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Platforms</th>
+                                            <td>{{this.productDetails.platforms}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Genres</th>
+                                            <td>{{this.productDetails.genres}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Initial Release</th>
+                                            <td>{{this.productDetails.initialRelease}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Content Rating</th>
+                                            <td>{{this.productDetails.contentRating}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIND SELLERS -->
+        <div class="mpl-box-sm bg-light">
+            <div class="container">
+                <h2>Buy From Sellers</h2>
+
+                <table
+                    class="table mpl-table-responsive-sm cyberpress-table cyberpress-team-players table-hover mb-0 mpl-table-product"
+                    style="width: max-content;">
+                    <thead style="text-align-last: center;">
+                        <tr>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                        class="name">ICON</span></button></th>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                        class="name">USER</span></button></th>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                        class="name">PRODUCT</span></button></th>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span class="name">PRICE
+                                        €</span></button></th>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                        class="name">DISCOUNT %</span></button></th>
+                            <th><button type="button" class="btn btn-secondary dropdown-toggle"><span class="name">ADD
+                                        TO CART</span></button></th>
+                            <!-- <th></th> -->
+                        </tr>
+                    </thead>
+                    <!-- <input formControlName="productTitle"
+                                                [class.is-invalid]="getProductTitle?.invalid && getProductTitle?.touched"
+                                                class="form-control" type="text" id="product_title" name="product_title"
+                                                placeholder="Product Title" list="products">
+                                            <span class="form-control-bg"></span>
+                                            <datalist id="products">
+                                                <option *ngFor="let productTitle of productDetails"
+                                                    value="{{productTitle.title}}"></option>
+                                            </datalist> -->
+
+                    <!-- <tbody *ngFor="let product of allProducts | searchFilter:'{{this.searchInput}}':'{{this.activeNickname}}'"
+                                style="text-align-last: center;"> -->
+
+                    <tbody
+                        *ngFor="let product of allProducts | searchFilter:this.getProductDetailsTitle():this.filterOption"
+                        style="text-align-last: center;">
+
+                        <!-- <ng-container *ngIf="product.productDetails.title == searchInput && searchInput != null";> -->
+                        <ng-container *ngIf="this.productDetails.title != null" ;>
+
+                            <!-- <input [hidden]="true" formControlName="productId" type="number" value="{{this.product.id}}" id="product_id" class="form-control"> -->
+
+                            <tr>
+                                <td class="cyberpress-table-item-image cyberpress-table-item-small"
+                                    style="width: auto;">
+                                    <a href="esports-single-player.html">
+                                        <img src="{{this.product?.user?.profileImageUrl}}" alt=""
+                                            class="cyberpress-team-players-thumb" style="height: unset;">
+                                    </a>
+                                </td>
+                                <td class="cyberpress-table-item-game">
+                                    <a href="/game-route/keys">{{this.product?.user?.nickname}}</a>
+                                    <div class="cyberpress-player-team-dates">
+                                        <span class="h4">
+                                            <span class="mpl-product-rating">
+                                                <span class="mpl-rating">
+                                                    <span class="mpl-rating-front"
+                                                        [ngStyle]="{ width: this.ratingValue }">
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                    </span>
+                                                    <span class="mpl-rating-back" style="margin-bottom: 6px;">
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                                                            </path>
+                                                        </svg>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </span><span>User Feedback</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col-12 col-md-6 col-lg-4" data-sr-item="checkout"
+                                        style="width: auto; display: inline-block; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                        <a href="/game-route/keys">{{this.getProductDetailsTitle()}}</a>
+                                        <div class="cyberpress-player-team-dates">
+                                            {{this.product?.productDetails?.publisher}}
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="mpl-table-price" data-title="Price">
+                                    <div class="col-12 col-md-6 col-lg-4" data-sr-item="checkout"
+                                        style="width:100px; display: inline-block; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                        <span class="mpl-price"
+                                            *ngIf="this.isDiscountApplied(product);else oldFullPrice">€{{this.getDiscountedPrice(product)}}
+                                            <span>€{{this.product?.pricePerKey}}</span></span>
+                                        <ng-template #oldFullPrice>
+                                            <span>€ {{this.product.pricePerKey}}</span>
+                                        </ng-template>
+                                    </div>
+                                </td>
+
+
+                                <td>-{{this.product?.discountPercent}}%</td>
+
+                                <td>
+                                    <div class="col-12">
+                                        <a role="button" class="btn btn-block btn-danger"
+                                            (click)="addItemToShoppingCart(this.getProductDetailsTitle(), this.product.user.email)">
+                                            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg" class="icon">
+                                                <path
+                                                    d="M1 1H5L7.68 14.39M7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6L7.68 14.39ZM10 21C10 21.5523 9.55228 22 9 22C8.44772 22 8 21.5523 8 21C8 20.4477 8.44772 20 9 20C9.55228 20 10 20.4477 10 21ZM21 21C21 21.5523 20.5523 22 20 22C19.4477 22 19 21.5523 19 21C19 20.4477 19.4477 20 20 20C20.5523 20 21 20.4477 21 21Z">
+                                                </path>
+                                            </svg></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- KEYS DISPLAY ROW -->
+                        </ng-container>
+                    </tbody>
+
+                </table>
+                <!-- END CONTENT -->
+
+            </div>
+        </div>
+        <!-- FIND SELLERS END -->
+    </div>

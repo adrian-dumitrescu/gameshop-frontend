@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -23,6 +23,14 @@ export class ShoppingCartService {
 
   public deleteItemFromShoppingCartById(cartItemId: number): Observable<ShoppingCart>{
     return this.http.delete<ShoppingCart>(`${this.apiServerURL}/shopping-cart/delete/item/${cartItemId}`);
+  }
+
+  public incrementItemQuantity(param: any): Observable<ShoppingCart> {
+    return this.http.put<ShoppingCart>(`${this.apiServerURL}/shopping-cart/increment`, param);
+  }
+
+  public decrementItemQuantity(param: any): Observable<ShoppingCart> {
+    return this.http.put<ShoppingCart>(`${this.apiServerURL}/shopping-cart/decrement`, param);
   }
 
 

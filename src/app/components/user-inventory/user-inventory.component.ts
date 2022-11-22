@@ -31,8 +31,9 @@ export class UserInventoryComponent implements OnInit, OnDestroy {
   public myProducts!: Product[];
   public productKeys!: ProductKey[];
   public imagePath: string = "../assets/game-icon-round/";
-  discountApplied: boolean = true;
+  public discountApplied: boolean = true;
 
+  
   constructor(private productDetailsService: ProductDetailsService,
     private authService: AuthenticationService,
     private formBuilder: FormBuilder,
@@ -99,7 +100,7 @@ export class UserInventoryComponent implements OnInit, OnDestroy {
       productTitle: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z0-9 ]*$")]),
       productKeyDiscount: new FormControl('', [Validators.required, Validators.pattern("100|[1-9]?[0-9]")]),// only numbers between 0 and 100
       productKeyPrice: new FormControl('', [Validators.required, Validators.pattern("^[1-9][0-9]?$|^500$")]),// only numbers between 0 and 500
-      activationKey: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z0-9]*$")])
+      activationKey: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z0-9-]*$")])
     })
   }
 
@@ -170,9 +171,10 @@ export class UserInventoryComponent implements OnInit, OnDestroy {
         error: (errorResponse: HttpErrorResponse) => {
           console.log(errorResponse.error.message);
           this.keySubmitSuccess = 'failed';
-          this.router.navigate(['/inventory', this.keySubmitSuccess]).then(() => {
-            window.location.reload();
-          });
+          this.addNewKeyForm.reset();
+          // this.router.navigate(['/inventory', this.keySubmitSuccess]).then(() => {
+          //   window.location.reload();
+          // });
         }
       })
     );
@@ -240,12 +242,19 @@ export class UserInventoryComponent implements OnInit, OnDestroy {
         },
         error: (errorResponse: HttpErrorResponse) => {
           console.log(errorResponse.error.message);
-
         }
       })
     );
   }
 
+  
+  public getNumberOfListedKeys(product: Product): number {
+    // console.log(product?.productKeys[0]);
+    if (product?.productKeys?.length != null) {
+      return product.productKeys.length;
+    }
+    return 0;
+  }
 
   public showProductEdit(productTitle: string) {
     this.editProduct = productTitle;

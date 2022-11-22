@@ -22,12 +22,13 @@ import { UserSettingsComponent } from './components/user-settings/user-settings.
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-
 import { UserInventoryComponent } from './components/user-inventory/user-inventory.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { ProductViewComponent } from './components/product-view/product-view.component';
+import { UserOrdersComponent } from './components/user-orders/user-orders.component';
 
 
 
@@ -49,7 +50,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
     UserInventoryComponent,
     UserCardComponent,
     SearchFilterPipe,
-    ContactUsComponent
+    ContactUsComponent,
+    ProductViewComponent,
+    UserOrdersComponent
   ],
   imports: [
     NotificationModule,

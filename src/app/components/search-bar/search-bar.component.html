@@ -135,12 +135,12 @@
                                 <td class="cyberpress-table-item-image cyberpress-table-item-small"
                                     style="width: auto;">
                                     <a href="esports-single-player.html">
-                                        <img src="{{this.product.user.profileImageUrl}}" alt=""
+                                        <img src="{{this.product?.user?.profileImageUrl}}" alt=""
                                             class="cyberpress-team-players-thumb" style="height: unset; width: 70px;">
                                     </a>
                                 </td>
                                 <td class="cyberpress-table-item-game">
-                                    <a href="/game-route/keys">{{this.product.user.nickname}}</a>
+                                    <a href="/game-route/keys">{{this.product?.user?.nickname}}</a>
                                     <div class="cyberpress-player-team-dates">
                                         <span class="h4">
                                             <span class="mpl-product-rating">
@@ -218,9 +218,9 @@
                                 <td>
                                     <div class="col-12 col-md-6 col-lg-4" data-sr-item="checkout"
                                         style="width: auto; display: inline-block; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
-                                        <a href="/game-route/keys">{{this.product.productDetails.title}}</a>
+                                        <a routerLink="/product-view/{{this.product.productDetails.id}}">{{this.product?.productDetails?.title}}</a>
                                         <div class="cyberpress-player-team-dates">
-                                            {{this.product.productDetails.publisher}}
+                                            {{this.product?.productDetails?.publisher}}
                                         </div>
                                     </div>
                                 </td>
@@ -229,7 +229,7 @@
                                         style="width:100px; display: inline-block; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
                                         <span class="mpl-price"
                                             *ngIf="this.isDiscountApplied(product);else oldFullPrice">€{{this.getDiscountedPrice(product)}}
-                                            <span>€{{this.product.pricePerKey}}</span></span>
+                                            <span>€{{this.product?.pricePerKey}}</span></span>
                                         <ng-template #oldFullPrice>
                                             <span #this.discount>€{{this.product.pricePerKey}}</span>
                                         </ng-template>
@@ -237,7 +237,7 @@
                                 </td>
 
 
-                                <td>-{{this.product.discountPercent}}%</td>
+                                <td>-{{this.product?.discountPercent}}%</td>
 
                                 <td>
                                     <div class="col-12">

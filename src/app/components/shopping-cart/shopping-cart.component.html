@@ -16,52 +16,104 @@
         <div class="container">
             <div class="row hgap-lg vgap-lg">
                 <div class="col-lg-8">
-                    <table class="table mpl-table-shop mpl-table-responsive" data-sr="product" data-sr-interval="100"
-                        data-sr-duration="1000" data-sr-distance="20">
-                        <ng-container>
-                            <tbody *ngFor="let cartItem of this.myShoppingCart?.cartItems">
-                                <tr class="mpl-table-product" data-sr-item="product"
-                                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
-                                    <td class="mpl-table-image">
-                                        <a href="shop-product.html" class="mpl-table-product-image">
-                                            <span class="mpl-image" style="background-color: #1f1d2900;">
-                                                <img src="{{this.imagePath}}{{this.cartItem?.product?.productDetails?.title}}.png"
-                                                    style="background-color: #282535; box-shadow: 0 4px 20px rgb(31 29 41 / 40%); opacity: 1; width: 80%; height: 95%; padding-left: 10px;">>
-                                            </span>
-                                        </a>
-                                    </td>
-                                    <td class="mpl-table-name" data-title="Product">
-                                        <a href="shop-product.html"
-                                            class="mpl-table-product-title h4">{{this.cartItem?.product?.productDetails?.title}}</a>
-                                        <span class="mpl-table-product-rating" data-title="Rating">
-                                            <span class="mpl-rating">
-                                                <div class="cyberpress-player-team-dates">
-                                                    {{this.cartItem?.product?.productDetails?.publisher}}</div>
-                                                <span class="mpl-rating-back">
-                                                </span>
+                    <table class="table mpl-table-shop mpl-table-responsive cyberpress-table cyberpress-team-players" >
+                        <!-- <table class="table mpl-table-responsive-sm  "> -->
+
+                        <thead style="text-align-last: center;">
+                            <tr>
+                                <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                            class="name">ICON</span></button></th>
+                                <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                            class="name">PRODUCT</span></button></th>
+                                <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                            class="name">QUANTITY</span></button></th>
+                                <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                            class="name">SELLER</span></button></th>
+                                <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                            class="name">PRICE €</span></button></th>
+                                <th><button type="button" class="btn btn-secondary dropdown-toggle"><span
+                                            class="name">ACTION</span></button></th>
+                            </tr>
+                        </thead>
+                        <br>
+                        <tbody *ngFor="let cartItem of this.myShoppingCart?.cartItems">
+                            <tr class="mpl-table-product" data-sr-item="product"
+                                style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0s, transform 1s cubic-bezier(0.5, 0, 0, 1) 0s;">
+                                <!-- IMAGE -->
+                                <td class="mpl-table-image">
+                                    <a routerLink="/product-view/{{this.cartItem?.product?.productDetails?.id}}" class="mpl-table-product-image">
+                                        <span class="mpl-image" style="background-color: #1f1d2900;">
+                                            <img src="{{this.imagePath}}{{this.cartItem?.product?.productDetails?.title}}.png"
+                                                style="background-color: #282535; box-shadow: 0 4px 20px rgb(31 29 41 / 40%); opacity: 1; width: 80%; height: 95%; padding-left: 10px;">
+                                        </span>
+                                    </a>
+                                </td>
+                                <!-- PRODUCT -->
+                                <td class="mpl-table-name" data-title="Product" style="max-width: 180px;">
+                                    <a routerLink="/product-view/{{this.cartItem?.product?.productDetails?.id}}"
+                                        class="mpl-table-product-title h4">{{this.cartItem?.product?.productDetails?.title}}</a>
+                                    <span class="mpl-table-product-rating" data-title="Rating">
+                                        <span class="mpl-rating">
+                                            <div class="cyberpress-player-team-dates">
+                                                {{this.cartItem?.product?.productDetails?.publisher}}</div>
+                                            <span class="mpl-rating-back">
                                             </span>
                                         </span>
-                                    </td>
-                                    <td class="mpl-table-price" data-title="Price">
-                                        <span class="mpl-price"
-                                            *ngIf="this.isDiscountApplied(this.cartItem.product);else oldFullPrice">€{{this.getDiscountedPrice(this.cartItem)}}
-                                            <span>€ {{this.cartItem.product.pricePerKey}}</span></span>
-                                        <ng-template #oldFullPrice>
-                                            <span #this.discount>€ {{this.cartItem.product.pricePerKey}}</span>
-                                        </ng-template>
-                                    </td>
-                                    <td class="mpl-table-remove">
-                                        <a class="mpl-table-product-remove" (click)="deleteItemFromShoppingCart(this.cartItem.id)">
-                                            <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                              xmlns="http://www.w3.org/2000/svg">
-                                              <path d="M18 6L6 18M6 6L18 18"></path>
-                                            </svg>
-                                          </a>
-                                    </td>
-                                </tr>
-                                <br>
-                            </tbody>
-                        </ng-container>
+                                    </span>
+                                </td>
+
+                                <!-- QUANTITY -->
+                                <td class="mpl-table-shop-total" data-title="Quantity" style="flex-grow: unset;flex-basis: unset;" style="max-width: 160px;">
+                                    <!-- <div class="col-12 col-md-6 col-lg-4" style="display:-webkit-inline-box;"> -->
+
+                                    <button class="minus-btn" type="button" name="button" (click)="onMinusClick(this.cartItem.id)">
+                                        <img src="../assets/svg-icons/minus.svg" alt="" />
+                                    </button>
+                                    <!-- <input class="form-control" type="text" name="name"
+                                        value="{{this.cartItem.quantity}}"
+                                        style="padding: unset; padding-left: 10px; width: 50%;"> -->
+                                    <input class="form-control" type="text" name="name"
+                                        value="{{this.cartItem.quantity}}"
+                                        style="padding: unset; padding-left: 10px; width: 20%;" readonly>
+                                    <button class="plus-btn" type="button" name="button" (click)="onPlusClick(this.cartItem.id)">
+                                        <img src="../assets/svg-icons/plus.svg" alt="" />
+                                    </button>
+                                    <!-- </div> -->
+                                </td>
+
+                                <!-- USER -->
+                                <td class="mpl-table-name" style="flex-grow: unset;flex-basis: unset;" style="max-width: 150px;">
+                                    <a href="/game-route/keys">{{this.cartItem?.product?.user?.nickname}}</a>
+                                </td>
+                                <td class="mpl-table-price" data-title="Price">
+                                    <span class="mpl-price"
+                                        *ngIf="this.isDiscountApplied(this.cartItem.product);else oldFullPrice">
+                                        € {{this.getDiscountedPrice(this.cartItem)}}
+                                        <span>€ {{this.getFullPrice(this.cartItem)}}</span></span>
+                                    <ng-template #oldFullPrice>
+                                        <span>€ {{this.getFullPrice(this.cartItem)}}</span>
+                                    </ng-template>
+                                </td>
+
+                                <!-- PRICE -->
+                                <td class="mpl-table-remove">
+                                    <!-- <a class="mpl-table-product-remove"
+                                        (click)="deleteItemFromShoppingCart(this.cartItem.id)">
+                                        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18 6L6 18M6 6L18 18"></path>
+                                        </svg>
+                                    </a> -->
+                                    <div class="col-12">
+                                        <button type="button" class="btn btn-block btn-md" style="width: 100px;"
+                                            (click)="deleteItemFromShoppingCart(this.cartItem.id)">REMOVE</button>
+                                        <!-- btn-secondary btn-primary-->
+                                    </div>
+                                </td>
+                            </tr>
+                            <br>
+                        </tbody>
+
                     </table>
                     <div class="row vgap mt-60">
                         <div class="col-auto">
@@ -73,29 +125,37 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4" style="padding-left: 50px; padding-right: unset">
                     <table class="table mpl-table-responsive mpl-table-shop-total">
                         <tbody>
+                            <tr *ngFor="let cartItem of this.myShoppingCart?.cartItems">
+                                <th>{{this.cartItem?.product?.productDetails?.title}}</th>
+                                <td data-title="Subtotal Info">€ {{this.getDiscountedPrice(this.cartItem)}} x {{this.cartItem?.quantity}}</td>
+                            </tr> 
+                            <hr>
                             <tr>
                                 <th>Subtotal</th>
-                                <td data-title="Subtotal">€ {{getShoppingCartTotal()}}</td>
+                                <td data-title="Subtotal">€ {{getShoppingCartSubtotal()}}</td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <th>Guard</th>
                                 <td data-title="Shipping">
                                     <ul class="mpl-list list-vgap-xs">
                                         <li>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" id="free_shipping"
-                                                    name="shipping" checked="" (change)="setTotalWithoutGuardOption()"><label class="form-check-label"
-                                                    for="free_shipping" >Free (no protection): <strong>€ 0.00</strong></label>
+                                                    name="shipping" checked=""
+                                                    (change)="setTotalWithoutGuardOption()"><label
+                                                    class="form-check-label" for="free_shipping">Free (no protection):
+                                                    <strong>€ 0.00</strong></label>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" id="flat_shipping"
-                                                    name="shipping" (change)="setTotalWithGuardOption()"><label class="form-check-label"
-                                                    for="flat_shipping" >Gamekey Guard: <strong>€ 2.00</strong></label>
+                                                    name="shipping" (change)="setTotalWithGuardOption()"><label
+                                                    class="form-check-label" for="flat_shipping">Gamekey Guard:
+                                                    <strong>€ 2.00</strong></label>
                                             </div>
                                         </li>
                                     </ul>
@@ -104,7 +164,7 @@
                             <tr>
                                 <th>Total</th>
                                 <td data-title="Total">€ {{this.totalPrice}}</td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                     <a routerLink="/checkout" class="btn btn-md btn-block">Proceed to Checkout</a>

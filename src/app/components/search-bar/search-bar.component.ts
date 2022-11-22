@@ -33,7 +33,6 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   public userRating: number = 100;
   public ratingValue: string = this.userRating + "%";
   public searchInput!: string;
-
   public activeProduct: string = "active"
   public activeNickname: string = ""
   public filterOption: string = "product"
@@ -72,11 +71,6 @@ export class SearchBarComponent implements OnInit, OnDestroy {
       this.productService.getAllProducts().subscribe({
         next: (products: Product[]) => {
           this.allProducts = products;
-          // products.forEach(product => {
-          //   console.log(product.id);
-          //   console.log(product.productDetails.title);
-          // })
-
         },
         error: (errorResponse: HttpErrorResponse) => {
           console.log(errorResponse.error.message);
@@ -111,9 +105,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
             this.dataSharingService.shoppingCart.next(shoppingCart);
             this.user.shoppingCart = shoppingCart;
             this.authService.addUserToLocalCache(this.user);
-            // this.router.navigate(['/search-bar']).then(() => {
-            //   window.location.reload();
-            // });
+
           },
           error: (errorResponse: HttpErrorResponse) => {
             console.log(errorResponse.error.message);
@@ -126,12 +118,13 @@ export class SearchBarComponent implements OnInit, OnDestroy {
       //this.guestShoppingCart.cartItems.push()
       this.router.navigate(['/sign-in']);
     }
+
   }
 
 
 
   public isDiscountApplied(product: Product): boolean {
-    if (product.discountPercent != 0) {
+    if (product?.discountPercent != 0) {
       return true;
     } else {
       return false;
@@ -139,7 +132,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   }
 
   public getDiscountedPrice(product: Product): number {
-    let discountedPrice = product.pricePerKey - (product.pricePerKey * product.discountPercent / 100);
+    let discountedPrice = product?.pricePerKey - (product?.pricePerKey * product?.discountPercent / 100);
     return discountedPrice;
   }
 

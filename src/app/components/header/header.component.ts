@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,8 +25,6 @@ import { SignInComponent } from '../sign-in/sign-in.component';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
-  // private subscription!: Subscription;
-  // private subscription2!: Subscription;
   public user!: User;
   public guestUser!: User;
   public isAuthenticated!: boolean;
@@ -99,8 +97,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private getUserRole(): string {
-    return this.authService.getUserFromLocalCache().roles[0].role;
-    //return this.user.roles[0].role;
+    // if (typeof this.authService.getUserFromLocalCache() !== 'undefined') {
+    if (this.authService.getUserFromLocalCache() !== null) {
+      return this.authService.getUserFromLocalCache()?.roles[0]?.role;
+    } else {
+      return "";
+    };
   }
 
   public get isAdmin(): boolean {
@@ -184,6 +186,53 @@ export class HeaderComponent implements OnInit, OnDestroy {
     );
   }
 
+  public onPlusClick(cartItemId: number){
+    let params = new HttpParams().set('cartItemId', cartItemId);
+
+    this.subscriptions.push(
+      this.shoppingCartService.incrementItemQuantity(params).subscribe({
+        next: (newShoppingCart: ShoppingCart) => {
+          // console.log(newShoppingCart.id);
+          // let newCartItems = this.shoppingCart.cartItems.filter(cartItem => cartItem.id !== cartItemId);
+          // this.shoppingCart.cartItems = newCartItems;
+          this.myShoppingCart = newShoppingCart;
+          this.dataSharingService.shoppingCart.next(this.myShoppingCart);
+
+          this.user.shoppingCart = newShoppingCart;
+          this.authService.addUserToLocalCache(this.user);
+
+        },
+        error: (errorResponse: HttpErrorResponse) => {
+          console.log(errorResponse.error.message);
+        }
+      })
+    );
+  }
+
+  public onMinusClick(cartItemId: number){
+    let params = new HttpParams().set('cartItemId', cartItemId);
+    
+    this.subscriptions.push(
+      this.shoppingCartService.decrementItemQuantity(params).subscribe({
+        next: (newShoppingCart: ShoppingCart) => {
+          console.log(newShoppingCart.id);
+          // let newCartItems = this.shoppingCart.cartItems.filter(cartItem => cartItem.id !== cartItemId);
+          // this.shoppingCart.cartItems = newCartItems;
+          this.myShoppingCart = newShoppingCart;
+          this.dataSharingService.shoppingCart.next(this.myShoppingCart);
+
+          this.user.shoppingCart = newShoppingCart;
+          this.authService.addUserToLocalCache(this.user);
+
+          
+        },
+        error: (errorResponse: HttpErrorResponse) => {
+          console.log(errorResponse.error.message);
+        }
+      })
+    );
+  }
+
   public getShoppingCartTotal(): number {
     if (this.myShoppingCart?.total != null) {
       return this.myShoppingCart.total;
@@ -191,9 +240,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
     return 0;
   }
 
-  public getDiscountedPrice(product: Product): number {
-    let discountedPrice = product.pricePerKey - (product.pricePerKey * product.discountPercent / 100);
-    return discountedPrice;
+  public getShoppingCartNumberOfItems(): number {
+    if (this.myShoppingCart?.cartItems?.length != null) {
+      return this.myShoppingCart?.cartItems.length;
+    }
+    return 0;
+  }
+
+  public getDiscountedPrice(cartItem: CartItem): number {
+    let discountedPrice = cartItem.product.pricePerKey - (cartItem.product.pricePerKey * cartItem.product.discountPercent / 100);
+    return discountedPrice * cartItem.quantity;
+  }
+
+  public getFullPrice(cartItem: CartItem): number {
+    return cartItem.product.pricePerKey * cartItem.quantity;
   }
 
   public isDiscountApplied(product: Product): boolean {
