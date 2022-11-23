@@ -31,7 +31,6 @@ import { ProductViewComponent } from './components/product-view/product-view.com
 import { UserOrdersComponent } from './components/user-orders/user-orders.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +51,7 @@ import { UserOrdersComponent } from './components/user-orders/user-orders.compon
     SearchFilterPipe,
     ContactUsComponent,
     ProductViewComponent,
-    UserOrdersComponent
+    UserOrdersComponent,
   ],
   imports: [
     NotificationModule,
@@ -61,14 +60,13 @@ import { UserOrdersComponent } from './components/user-orders/user-orders.compon
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+
   ],
   providers: [
     NotificationService,
     AuthenticationGuard,
     AuthenticationService,
-    UserService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }], 
-    bootstrap: [AppComponent]
+    UserService,{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }], bootstrap: [AppComponent]
 })
 export class AppModule { }

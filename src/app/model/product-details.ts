@@ -11,4 +11,7 @@ export class ProductDetails {
     platforms!: string;
     publisher!: string;
     products!: Product[];
+
+    constructor(){
+    }
 }
