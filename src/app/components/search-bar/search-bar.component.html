@@ -123,7 +123,7 @@
                     <!-- <tbody *ngFor="let product of allProducts | searchFilter:'{{this.searchInput}}':'{{this.activeNickname}}'"
                                 style="text-align-last: center;"> -->
 
-                    <tbody *ngFor="let product of allProducts | searchFilter:this.searchInput:this.filterOption"
+                    <tbody *ngFor="let product of allProducts | searchFilter:this.searchInput:this.filterOption:this.user.nickname"
                         style="text-align-last: center;">
 
                         <!-- <ng-container *ngIf="product.productDetails.title == searchInput && searchInput != null";> -->

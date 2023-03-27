@@ -26,6 +26,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   public orderStatus!: string;
   // public orderStatus: string = "success";
   public imagePath: string = "../assets/game-icon-round/";
+  public purchaseResponseMessgae: string = "";
 
   constructor(private authService: AuthenticationService,
     private shoppingCartService: ShoppingCartService,
@@ -120,14 +121,17 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
             this.user.orderDetails.push(newOrder);
             this.user.shoppingCart = new ShoppingCart;
+
             this.authService.addUserToLocalCache(this.user);
 
             this.myShoppingCart = this.user.shoppingCart;
             this.dataSharingService.shoppingCart.next(this.myShoppingCart);
+            
 
             this.orderStatus = 'success';
           },
           error: (errorResponse: HttpErrorResponse) => {
+            this.purchaseResponseMessgae = errorResponse.error.message;
             console.log(errorResponse.error.message);
             this.orderStatus = 'failed';
           }

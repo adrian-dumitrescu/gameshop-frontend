@@ -8,6 +8,7 @@ import { Product } from 'src/app/model/product';
 import { User } from 'src/app/model/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DataSharingService } from 'src/app/services/data-sharing.service';
+import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -30,7 +31,8 @@ export class UserComponent implements OnInit, OnDestroy {
   constructor(private userService: UserService,
     private authService: AuthenticationService,
     private activatedRoute: ActivatedRoute,
-    private dataSharingService: DataSharingService) {
+    private dataSharingService: DataSharingService,
+    private productService: ProductService) {
     this.subscriptions.push(
       this.dataSharingService.products.subscribe(products => {
         this.myProducts = products;
@@ -42,6 +44,7 @@ export class UserComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getAuthUser();
     this.user = this.authService.getUserFromLocalCache();
+    this.getUserProducts();
     this.getRoleToString();
     //this.myProducts = this.user.products;
 
@@ -57,6 +60,21 @@ export class UserComponent implements OnInit, OnDestroy {
       this.user = this.authService.getUserFromLocalCache();
       this.myProducts = this.user.products;
     }
+  }
+
+  public getUserProducts() {
+    this.subscriptions.push(
+      this.productService.getUserProducts(this.user.email).subscribe({
+        next: (products: Product[]) => {
+          this.myProducts = products;
+          this.dataSharingService.products.next(this.myProducts);
+          this.authService.addUserToLocalCache(this.user);
+        },
+        error: (errorResponse: HttpErrorResponse) => {
+          console.log(errorResponse.error.message);
+        }
+      })
+    );
   }
 
   public getNumberOfListedKeys(): number {

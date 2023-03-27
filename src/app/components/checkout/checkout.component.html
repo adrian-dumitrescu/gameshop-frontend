@@ -19,7 +19,7 @@
         <div class="mpl-box-md">
             <div class="container">
                 <div *ngIf="this.orderStatus == 'failed'" class="alert alert-fail" role="alert">
-                    <strong>Failed!</strong> Your order could not be completed
+                    <strong>Failed!</strong> Reason: {{this.purchaseResponseMessgae}}
                 </div>
                 <ng-container *ngIf="this.orderStatus == 'success'">
                     <div class="alert alert-success" role="alert">

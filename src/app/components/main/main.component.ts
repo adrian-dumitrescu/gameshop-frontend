@@ -63,7 +63,7 @@ export class MainComponent implements OnInit, OnDestroy {
     return "";
   }
 
-  public getFristProduct(): string {
+  public getFirstProduct(): string {
     if (this.carouselProductDetails[0].title != null) {
       return this.carouselProductDetails[0].title;
     }

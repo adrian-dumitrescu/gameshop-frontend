@@ -252,7 +252,7 @@
                                 style="text-align-last: center;"> -->
 
                     <tbody
-                        *ngFor="let product of allProducts | searchFilter:this.getProductDetailsTitle():this.filterOption"
+                        *ngFor="let product of allProducts | searchFilter:this.getProductDetailsTitle():this.filterOption:this.user.nickname"
                         style="text-align-last: center;">
 
                         <!-- <ng-container *ngIf="product.productDetails.title == searchInput && searchInput != null";> -->
